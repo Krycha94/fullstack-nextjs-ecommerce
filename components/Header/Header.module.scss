@@ -1,0 +1,72 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.header {
+	background-color: aquamarine;
+	padding: 0.9rem;
+
+	@include b.breakpoint(md) {
+		padding: 1.2rem;
+	}
+
+	&__center {
+		@include m.container;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__nav {
+		display: none;
+		a {
+			padding: 0.4rem;
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: 1.2rem;
+
+			&:hover,
+			&:active,
+			&:focus {
+				transition: v.$transition;
+				color: red;
+			}
+		}
+
+		@include b.breakpoint(md) {
+			display: flex;
+		}
+	}
+
+	&__container {
+		display: flex;
+		gap: 2.5rem;
+	}
+
+	&__hamburger {
+		font-size: 1.6rem;
+		font-weight: bold;
+		border: none;
+		background-color: transparent;
+
+		@include b.breakpoint(md) {
+			display: none;
+		}
+	}
+
+	&__loginBtn {
+		display: none;
+		border: none;
+		background-color: transparent;
+		font-size: 1.3rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		&:hover {
+			cursor: pointer;
+		}
+
+		@include b.breakpoint(md) {
+			display: flex;
+		}
+	}
+}

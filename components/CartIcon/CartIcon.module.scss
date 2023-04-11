@@ -1,0 +1,32 @@
+.cartIcon {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+
+	&__price {
+		font-weight: bold;
+	}
+
+	&__link {
+		position: relative;
+
+		svg {
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+	}
+
+	&__badge {
+		position: absolute;
+		top: -10px;
+		right: -12px;
+    width: 1.2rem;
+    height: 1.2rem;
+		background-color: black;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+	}
+}

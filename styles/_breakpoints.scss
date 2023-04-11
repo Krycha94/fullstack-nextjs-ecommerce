@@ -1,0 +1,14 @@
+$breakpoints: (
+	"md": 48em,
+	// 768px,
+	"lg": 61em,
+	// 976px,
+	"xl": 90em,
+	// 1440px,
+);
+
+@mixin breakpoint($size) {
+	@media screen and (min-width: map-get($breakpoints, $size)) {
+		@content;
+	}
+}
