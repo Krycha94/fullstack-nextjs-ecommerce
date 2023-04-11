@@ -1,0 +1,64 @@
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100vh;
+	z-index: 10;
+	background: rgba(0, 0, 0, 0.6);
+	&.visible {
+		left: 0;
+	}
+	@include b.breakpoint(md) {
+		display: none;
+	}
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: -100%;
+	width: 80%;
+	height: 100vh;
+	background-color: v.$color-bg;
+	z-index: 20;
+	padding: 4rem 1rem;
+	transition: v.$transition;
+	&.visible {
+		left: 0;
+	}
+	@include b.breakpoint(md) {
+		display: none;
+	}
+
+	&__button {
+		border: solid 3px white;
+		padding: 0.5rem;
+		font-size: 2rem;
+		transition: v.$transition;
+		&:hover,
+		&:focus,
+		&:active {
+		}
+	}
+
+	&__nav {
+		display: flex;
+		flex-direction: column;
+		margin-top: 2rem;
+		font-size: 1.4rem;
+
+		a {
+			text-transform: uppercase;
+			padding: 1rem 0 1rem 0.6rem;
+			transition: v.$transition;
+			&:hover,
+			&:active,
+			&:focus {
+			}
+		}
+	}
+}

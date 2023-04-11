@@ -1,11 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import CartIcon from "../CartIcon/CartIcon";
-import { navLinks } from "@/utils/constants";
-import { RxHamburgerMenu } from "react-icons/rx";
-import styles from "./Header.module.scss";
 import Link from "next/link";
+import CartIcon from "../CartIcon/CartIcon";
+import MobileNav from "../MobileNav/MobileNav";
+import { navLinks } from "@/utils/constants";
+import { FaBars } from "react-icons/fa";
+import styles from "./Header.module.scss";
 
 const Header = () => {
+	const [isNavOpen, setIsNavOpen] = useState(false);
+
+	const handleOpen = () => setIsNavOpen(true);
+	const handleClose = () => setIsNavOpen(false);
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.header__center}>
@@ -24,11 +33,12 @@ const Header = () => {
 				/>
 				<div className={styles.header__container}>
 					<CartIcon />
-					<button className={styles.header__hamburger}>
-						<RxHamburgerMenu />
+					<button className={styles.header__hamburger} onClick={handleOpen}>
+						<FaBars />
 					</button>
 					<button className={styles.header__loginBtn}>Login</button>
 				</div>
+				<MobileNav isNavOpen={isNavOpen} onClose={handleClose} />
 			</div>
 		</header>
 	);
