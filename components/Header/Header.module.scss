@@ -3,7 +3,6 @@
 @use "@/styles/variables" as v;
 
 .header {
-	background-color: aquamarine;
 	padding: 0.9rem;
 
 	@include b.breakpoint(md) {

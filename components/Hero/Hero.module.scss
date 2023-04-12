@@ -1,0 +1,66 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.hero {
+	background-color: v.$color-gray-light;
+	padding-top: 2rem;
+
+	&__container {
+		@include m.container;
+		display: flex;
+		flex-direction: column;
+
+		@include b.breakpoint(md) {
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			gap: 4rem;
+		}
+	}
+
+	&__content {
+		text-align: center;
+		padding: 4rem 1rem;
+
+		h2 {
+			font-weight: 400;
+			font-size: 1rem;
+			letter-spacing: 1px;
+		}
+
+		h1 {
+			font-size: 2.8rem;
+			line-height: 1.2;
+			margin: 1rem 0 2rem;
+		}
+
+		a {
+			padding: 0.8rem 1.6rem;
+			background-color: v.$color-font;
+			color: v.$color-bg;
+			transition: v.$transition;
+
+			&:hover,
+			&:active,
+			&:focus {
+				opacity: 0.6;
+			}
+		}
+	}
+
+	&__img {
+		overflow: hidden;
+		height: 300px;
+		@include b.breakpoint(md) {
+			height: 550px;
+		}
+
+		img {
+			width: 100%;
+			max-width: 500px;
+			height: auto;
+			margin: 0 auto;
+		}
+	}
+}

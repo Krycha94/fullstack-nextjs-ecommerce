@@ -27,8 +27,8 @@ const Header = () => {
 				</nav>
 				<Image
 					src="/cloth-logo.png"
-					width={100}
-					height={50}
+					width={80}
+					height={40}
 					alt="krycha store"
 				/>
 				<div className={styles.header__container}>
