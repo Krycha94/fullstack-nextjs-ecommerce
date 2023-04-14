@@ -13,7 +13,7 @@ const Collections = () => {
 					<Image
 						src="/banner-01.jpg"
 						alt="Women collection"
-						width={320}
+						width={520}
 						height={220}
 					/>
 					<Link href="/products">
@@ -26,7 +26,7 @@ const Collections = () => {
 					<Image
 						src="/banner-02.jpg"
 						alt="Men collection"
-						width={320}
+						width={520}
 						height={220}
 					/>
 					<Link href="/products">
@@ -39,7 +39,7 @@ const Collections = () => {
 					<Image
 						src="/banner-03.jpg"
 						alt="Kids collection"
-						width={320}
+						width={520}
 						height={220}
 					/>
 					<Link href="/products">

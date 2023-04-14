@@ -1,0 +1,85 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.product {
+	&__container {
+		position: relative;
+		overflow: hidden;
+
+		&:hover img {
+			scale: 1.1;
+		}
+
+		&:hover a {
+			bottom: 5%;
+		}
+	}
+
+	&__image {
+		width: 100%;
+		height: auto;
+		transition: v.$transition-product;
+	}
+
+	&__link {
+		transition: v.$transition;
+		position: absolute;
+		bottom: -15%;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0.5rem 1rem;
+		background-color: v.$color-bg;
+		color: v.$color-font;
+		border-radius: 2rem;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: v.$color-font;
+			color: v.$color-bg;
+		}
+	}
+
+	&__footer {
+		padding: 1rem 0;
+	}
+
+	&__title {
+		color: v.$color-font-lighter;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.3rem;
+
+		svg {
+			font-size: 1.2rem;
+			cursor: pointer;
+			transition: v.$transition;
+
+			&:hover {
+				color: v.$color-primary;
+			}
+		}
+	}
+
+	&__titleLink {
+		transition: v.$transition;
+	}
+
+	&__titleLink:hover {
+		color: v.$color-primary;
+	}
+
+	&__stars {
+		color: #ffb900;
+		display: flex;
+		align-items: center;
+		gap: 0.1rem;
+		margin-bottom: 0.5rem;
+	}
+
+	&__price {
+		color: v.$color-font-light;
+	}
+}
