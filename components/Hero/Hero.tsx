@@ -7,7 +7,7 @@ const Hero = () => {
 		<section className={styles.hero}>
 			<div className={styles.hero__container}>
 				<div className={styles.hero__content}>
-					<h2>#NEW SUMMER COLLECTION 2023</h2>
+					<span>#NEW SUMMER COLLECTION 2023</span>
 					<h1>ARRIVALS SALES</h1>
 					<Link href="/products">Shop Now</Link>
 				</div>

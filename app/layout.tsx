@@ -5,7 +5,7 @@ import Header from "@/components/Header/Header";
 const poppins = Poppins({ subsets: ["latin"], weight: ["300", "400", "700"] });
 
 export const metadata = {
-	title: "Krycha Store - clothing",
+	title: "Krycha Store - Home",
 	description:
 		"Discover the latest trends in Krycha store, including women, men and kids clothing. Shop the best outfits for this season at our online store",
 	icons: {

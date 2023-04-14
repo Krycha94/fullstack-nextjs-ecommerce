@@ -4,7 +4,10 @@
 
 .hero {
 	background-color: v.$color-gray-light;
-	padding-top: 2rem;
+
+	@include b.breakpoint(md) {
+		padding-top: 3rem;
+	}
 
 	&__container {
 		@include m.container;
@@ -23,7 +26,7 @@
 		text-align: center;
 		padding: 4rem 1rem;
 
-		h2 {
+		span {
 			font-weight: 400;
 			font-size: 1rem;
 			letter-spacing: 1px;
