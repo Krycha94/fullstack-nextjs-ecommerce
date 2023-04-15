@@ -1,0 +1,39 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.breadcrumbs {
+	background-color: v.$color-gray-light;
+	padding: 2rem 0.9rem;
+	text-transform: capitalize;
+	@include b.breakpoint(md) {
+		padding: 2.8rem 1.2rem;
+	}
+
+	&__container {
+		@include m.container;
+	}
+
+	h3 {
+		font-size: 1.7rem;
+		font-weight: 500;
+	}
+
+	span {
+		font-size: 1rem;
+		font-weight: 400;
+		color: v.$color-primary;
+	}
+
+	a {
+		color: v.$color-font;
+		transition: v.$transition;
+		padding: 0.4rem 0;
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: v.$color-primary;
+		}
+	}
+}

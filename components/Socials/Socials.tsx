@@ -8,7 +8,9 @@ const Socials = () => {
 		<ul className={styles.socials}>
 			{socials.map((social: SocialType) => (
 				<li key={social.id}>
-					<Link href={social.address}>{social.icon}</Link>
+					<Link href={social.address} target={"_blank"}>
+						{social.icon}
+					</Link>
 				</li>
 			))}
 		</ul>

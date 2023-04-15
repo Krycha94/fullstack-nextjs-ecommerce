@@ -19,14 +19,14 @@
 	&__nav {
 		display: none;
 		a {
-			padding: 0.2rem 0.3rem;
+			padding: 0.3rem 0.8rem 0.2rem 0;
 			text-transform: uppercase;
 			position: relative;
 			transition: v.$transition;
 			&:hover::after,
 			&:active::after,
 			&:focus::after {
-				width: 50%;
+				width: 70%;
 			}
 
 			&::after {
@@ -35,7 +35,7 @@
 				height: 0.2rem;
 				background-color: v.$color-primary;
 				position: absolute;
-				left: 0.3rem;
+				left: 0;
 				bottom: -0.1rem;
 				transition: v.$transition;
 			}
