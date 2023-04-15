@@ -1,0 +1,20 @@
+@use "@/styles/variables" as v;
+
+.socials {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	gap: 0.3rem;
+
+	svg {
+		background-color: v.$color-bg;
+		padding: 0.3rem;
+		font-size: 2rem;
+		transition: v.$transition;
+
+		&:hover {
+			background-color: v.$color-font;
+			color: v.$color-bg;
+		}
+	}
+}

@@ -1,0 +1,61 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.contact {
+	background-color: v.$color-gray-light;
+
+	&__container {
+		@include m.container;
+		padding: 2rem 1rem;
+
+		@include b.breakpoint(md) {
+			padding: 4rem 1rem;
+		}
+
+		h3 {
+			text-align: center;
+		}
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		margin: 2rem 0;
+		gap: 1rem;
+		@include b.breakpoint(md) {
+			flex-direction: row;
+		}
+
+		input {
+			padding: 0.3rem 0.6rem;
+			border: none;
+			@include b.breakpoint(md) {
+				flex: 4;
+			}
+
+			&:active,
+			&:focus {
+				outline: 1px solid v.$color-font;
+			}
+		}
+
+		button {
+			padding: 0.3rem 0.6rem;
+			background-color: v.$color-font;
+			color: v.$color-bg;
+			transition: v.$transition;
+			border: none;
+			cursor: pointer;
+			@include b.breakpoint(md) {
+				flex: 1;
+			}
+
+			&:hover,
+			&:active,
+			&:focus {
+				opacity: 0.6;
+			}
+		}
+	}
+}
