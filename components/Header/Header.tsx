@@ -36,7 +36,7 @@ const Header = () => {
 					<button className={styles.header__hamburger} onClick={handleOpen}>
 						<FaBars />
 					</button>
-					<button className={styles.header__loginBtn}>Login</button>
+					<Link href="login" className={styles.header__login}>Login</Link>
 				</div>
 				<MobileNav isNavOpen={isNavOpen} onClose={handleClose} />
 			</div>

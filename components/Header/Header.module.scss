@@ -19,16 +19,25 @@
 	&__nav {
 		display: none;
 		a {
-			padding: 0.4rem;
+			padding: 0.2rem 0.3rem;
 			text-transform: uppercase;
-			font-weight: 500;
-			font-size: 1.2rem;
+			position: relative;
+			transition: v.$transition;
+			&:hover::after,
+			&:active::after,
+			&:focus::after {
+				width: 50%;
+			}
 
-			&:hover,
-			&:active,
-			&:focus {
+			&::after {
+				content: "";
+				width: 0;
+				height: 0.2rem;
+				background-color: v.$color-primary;
+				position: absolute;
+				left: 0.3rem;
+				bottom: -0.1rem;
 				transition: v.$transition;
-				color: red;
 			}
 		}
 
@@ -53,16 +62,10 @@
 		}
 	}
 
-	&__loginBtn {
+	&__login {
 		display: none;
-		border: none;
-		background-color: transparent;
-		font-size: 1.3rem;
-		font-weight: 600;
 		text-transform: uppercase;
-		&:hover {
-			cursor: pointer;
-		}
+		padding: 0.5rem;
 
 		@include b.breakpoint(md) {
 			display: flex;

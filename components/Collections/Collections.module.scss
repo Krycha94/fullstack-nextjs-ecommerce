@@ -68,7 +68,9 @@
 			opacity: 1;
 		}
 
-		&:hover h3 {
+		&:hover h3,
+		&:active h3,
+		&:focus h3 {
 			opacity: 0;
 		}
 	}

@@ -47,7 +47,8 @@
 			&:hover,
 			&:active,
 			&:focus {
-				opacity: 0.6;
+				background-color: v.$color-bg;
+				color: v.$color-font;
 			}
 		}
 	}
