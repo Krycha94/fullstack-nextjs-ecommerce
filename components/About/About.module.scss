@@ -1,0 +1,119 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.about {
+	@include m.container;
+	margin: 2rem auto;
+	background-image: url("/bg-01.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	height: 300px;
+
+	@include b.breakpoint(md) {
+		margin: 5rem auto;
+		height: 600px;
+		background-attachment: fixed;
+	}
+
+	&__overlay {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+
+	&__content {
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 5;
+		color: v.$color-bg;
+
+		p:nth-child(1) {
+			font-size: 0.8rem;
+			margin-bottom: 0.5rem;
+			@include b.breakpoint(md) {
+				font-size: 1rem;
+			}
+		}
+
+		p:nth-child(2) {
+			font-size: 1.4rem;
+			margin-bottom: 0.5rem;
+			line-height: 1.1;
+			font-weight: 600;
+			@include b.breakpoint(md) {
+				font-size: 2rem;
+			}
+		}
+
+		p:nth-child(3) {
+			margin-bottom: 2.5rem;
+			@include b.breakpoint(md) {
+				font-size: 1.5rem;
+			}
+		}
+
+		a {
+			padding: 0.8rem 1.2rem;
+			background-color: v.$color-font;
+			color: v.$color-bg;
+			transition: v.$transition;
+
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: v.$color-bg;
+				color: v.$color-font;
+			}
+		}
+	}
+}
+
+.story {
+	@include m.container;
+	display: grid;
+	gap: 2rem;
+	margin-bottom: 2rem;
+	@include b.breakpoint(lg) {
+		grid-template-columns: 1fr 1fr;
+		margin-bottom: 5rem;
+		gap: 0rem;
+	}
+
+	img {
+		width: 100%;
+		max-width: 490px;
+		height: auto;
+		margin: 0 auto;
+		@include b.breakpoint(lg) {
+			margin: 0;
+		}
+	}
+
+	&__content {
+		text-align: center;
+		@include b.breakpoint(lg) {
+			text-align: left;
+		}
+
+		h2 {
+			margin-bottom: 1rem;
+			@include b.breakpoint(lg) {
+				font-size: 3rem;
+			}
+		}
+
+		p {
+			@include b.breakpoint(lg) {
+				font-size: 1.2rem;
+				line-height: 2;
+			}
+		}
+	}
+}

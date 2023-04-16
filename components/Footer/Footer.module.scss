@@ -1,11 +1,15 @@
 @use "@/styles/variables" as v;
+@use "@/styles/breakpoints.scss" as b;
 
 .footer {
 	width: 100%;
 	text-align: center;
-	padding: 1.5rem 0;
+	padding: 0.5rem 0;
 	background-color: v.$color-font;
 	color: v.$color-bg;
+	@include b.breakpoint(md) {
+		padding: 1.5rem 0;
+	}
 
 	a {
 		color: v.$color-primary;
