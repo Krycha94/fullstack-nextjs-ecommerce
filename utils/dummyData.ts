@@ -203,7 +203,7 @@ export const products = [
 		stock: 6,
 		brand: "nike",
 		size: ["S", "XL"],
-		name: "Nike T-Shirt Sportswear Essential",
+		name: "Nike T-Shirt Essential",
 		stars: 4.2,
 		description:
 			"A versatile T-shirt in streetwear style from the Nike brand. The model has a shortened cut and lowered shoulder line. Cotton fabric sits comfortably on the body and allows the skin to breathe. A contrasting brand logo adorns the front.",
