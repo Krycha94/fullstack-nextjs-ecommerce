@@ -1,13 +1,17 @@
-import { products } from "@/utils/dummyData";
-import styles from "./PopularProducts.module.scss";
 import Product from "../Product/Product";
+import ProductType from "@/types/ProductType";
+import styles from "./PopularProducts.module.scss";
 
-const PopularProducts = () => {
+type PopularProductsProps = {
+	products: ProductType[];
+};
+
+const PopularProducts = ({ products }: PopularProductsProps) => {
 	return (
 		<section className={styles.products}>
 			<h2>Popular Products</h2>
 			<div className={styles.products__container}>
-				{products.slice(0, 4).map((product) => (
+				{products.map((product) => (
 					<Product key={product.id} {...product} />
 				))}
 			</div>

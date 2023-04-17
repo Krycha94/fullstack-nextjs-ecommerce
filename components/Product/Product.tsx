@@ -1,15 +1,16 @@
 import Image from "next/image";
-import styles from "./Product.module.scss";
 import Link from "next/link";
 import { BiHeart } from "react-icons/bi";
 import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
+import ProductType from "@/types/ProductType";
+import styles from "./Product.module.scss";
 
-const Product = ({ id, images, name, price }: any) => {
+const Product = ({ id, images, name, price }: ProductType) => {
 	return (
 		<article className={styles.product}>
 			<div className={styles.product__container}>
 				<Image
-					src={images[2].url}
+					src={images[2].url + ".jpg"}
 					alt={name}
 					width={500}
 					height={500}
