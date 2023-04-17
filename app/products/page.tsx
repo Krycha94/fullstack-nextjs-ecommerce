@@ -11,10 +11,6 @@ export const metadata = {
 };
 
 const ProductsPage = () => {
-	return (
-		<>
-			<Products products={products} />
-		</>
-	);
+	return <Products products={products} />;
 };
 export default ProductsPage;
