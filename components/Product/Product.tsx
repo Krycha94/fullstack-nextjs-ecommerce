@@ -1,11 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BiHeart } from "react-icons/bi";
-import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
 import ProductType from "@/types/ProductType";
 import styles from "./Product.module.scss";
+import Stars from "../Stars/Stars";
 
-const Product = ({ id, images, name, price }: ProductType) => {
+const Product = ({
+	id,
+	images,
+	name,
+	price,
+	discount,
+	stars,
+	reviews,
+}: ProductType) => {
 	return (
 		<article className={styles.product}>
 			<div className={styles.product__container}>
@@ -32,12 +40,17 @@ const Product = ({ id, images, name, price }: ProductType) => {
 					</h4>
 					<BiHeart />
 				</div>
-				<div className={styles.product__stars}>
-					<BsStarFill />
-					<BsStarHalf />
-					<BsStar />
-				</div>
-				<p className={styles.product__price}>${price}</p>
+				<Stars stars={stars} />
+				<p className={styles.product__price}>
+					{discount ? (
+						<>
+							<span>${(price * 0.9).toFixed(2)}</span>
+							<span className={styles.product__oldPrice}>${price}</span>
+						</>
+					) : (
+						<span>${price}</span>
+					)}
+				</p>
 			</footer>
 		</article>
 	);

@@ -22,7 +22,7 @@ const About = () => {
 					height={690}
 				/>
 				<article className={styles.story__content}>
-					<h2>Story</h2>
+					<h2>About</h2>
 					<p>
 						Krycha Store is a great spot to find classic, timeless pieces for
 						men, women and kids. From comfy joggers and denim jeans to stylish
