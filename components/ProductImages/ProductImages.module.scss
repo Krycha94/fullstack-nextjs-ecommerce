@@ -1,3 +1,29 @@
 @use "@/styles/mixins.scss" as m;
 @use "@/styles/breakpoints.scss" as b;
 @use "@/styles/variables" as v;
+
+.images {
+	&__mainImage {
+		width: 100%;
+		height: auto;
+		border-radius: 0.5rem;
+	}
+
+	&__gallery {
+		margin-top: 1rem;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		column-gap: 1rem;
+	}
+
+	&__altImage {
+		width: 100%;
+		height: auto;
+		cursor: pointer;
+		border-radius: 0.5rem;
+	}
+
+	&__altImage.active {
+		opacity: 0.5;
+	}
+}

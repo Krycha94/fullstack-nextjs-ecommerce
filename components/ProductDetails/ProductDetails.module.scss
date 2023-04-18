@@ -1,3 +1,22 @@
 @use "@/styles/mixins.scss" as m;
 @use "@/styles/breakpoints.scss" as b;
 @use "@/styles/variables" as v;
+
+.product {
+	background-color: #ddd;
+	@include m.container;
+	margin: 2rem auto;
+	padding: 0 0.9rem;
+	display: grid;
+	gap: 4rem;
+
+	@include b.breakpoint(lg) {
+		padding: 0 1.1rem;
+		margin: 5rem auto;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media screen and (min-width: 1340px) {
+		padding: 0;
+	}
+}
