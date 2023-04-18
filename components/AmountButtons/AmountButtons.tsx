@@ -1,9 +1,16 @@
+import styles from "./AmountButtons.module.scss";
+import { FaMinus, FaPlus } from "react-icons/fa";
+
 const AmountButtons = () => {
 	return (
-		<div>
-			<button type="button">-</button>
+		<div className={styles.amountBtns}>
+			<button type="button">
+				<FaMinus />
+			</button>
 			<span>5</span>
-			<button type="button">+</button>
+			<button type="button">
+				<FaPlus />
+			</button>
 		</div>
 	);
 };

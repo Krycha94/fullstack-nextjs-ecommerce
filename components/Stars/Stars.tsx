@@ -23,10 +23,10 @@ const Stars = ({ stars, reviews }: StarsProps) => {
 	});
 
 	return (
-		<>
-			<div className={styles.stars}>{newStars}</div>
-			{reviews && <p className={styles.reviews}>({reviews} reviews)</p>}
-		</>
+		<div className={styles.stars}>
+			<div className={styles.stars__container}>{newStars}</div>
+			{reviews && <p className={styles.stars__reviews}>({reviews} reviews)</p>}
+		</div>
 	);
 };
 export default Stars;

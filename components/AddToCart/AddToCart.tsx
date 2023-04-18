@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import AmountButtons from "../AmountButtons/AmountButtons";
 import styles from "./AddToCart.module.scss";
 
@@ -7,22 +10,31 @@ type AddToCartProps = {
 
 const AddToCart = ({ product }: AddToCartProps) => {
 	const { id, stock, size } = product;
+	const [mainSize, setMainSize] = useState(size[0]);
 
 	return (
-		<div>
+		<section>
 			<div className={styles.size}>
-				<span>Size</span>
-				<div>
+				<span className={styles.size__title}>Size</span>
+				<div className={styles.size__container}>
 					{size?.map((s: string, index: number) => (
-						<button key={index}>{s}</button>
+						<button
+							key={index}
+							className={`${styles.size__btn} ${
+								mainSize === s && styles.active
+							}`}
+							onClick={() => setMainSize(s)}
+						>
+							{s}
+						</button>
 					))}
 				</div>
 			</div>
-			<div className={styles.btns}>
+			<div className={styles.btnContainer}>
 				<AmountButtons />
-				<button>Add to cart</button>
+				<button className={styles.btnContainer__btn}>Add to cart</button>
 			</div>
-		</div>
+		</section>
 	);
 };
 export default AddToCart;

@@ -3,12 +3,11 @@
 @use "@/styles/variables" as v;
 
 .product {
-	background-color: #ddd;
 	@include m.container;
 	margin: 2rem auto;
 	padding: 0 0.9rem;
 	display: grid;
-	gap: 4rem;
+	gap: 3rem;
 
 	@include b.breakpoint(lg) {
 		padding: 0 1.1rem;
@@ -18,5 +17,42 @@
 
 	@media screen and (min-width: 1340px) {
 		padding: 0;
+	}
+
+	&__category {
+		text-transform: uppercase;
+		color: v.$color-font-lighter;
+	}
+
+	&__price {
+		color: v.$color-font;
+		font-size: 1.1rem;
+		margin-top: 0.5rem;
+	}
+
+	&__oldPrice {
+		color: v.$color-font-light;
+		text-decoration: line-through;
+		margin-left: 0.4rem;
+	}
+
+	&__description {
+		margin: 0.5rem 0;
+		color: v.$color-font-lighter;
+	}
+
+	&__info {
+		display: flex;
+		gap: 1rem;
+		color: v.$color-font-lighter;
+		padding: 0.5rem 0;
+		border-bottom: 1px solid #ccc;
+	}
+
+	&__stock,
+	&__brand {
+		color: v.$color-font-light;
+		font-weight: 600;
+		text-transform: uppercase;
 	}
 }

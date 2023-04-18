@@ -1,0 +1,42 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.amountBtns {
+	border: 1px solid #ccc;
+	display: grid;
+	width: 120px;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	text-align: center;
+
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 34px;
+		border: none;
+		cursor: pointer;
+		background-color: transparent;
+		transition: 0.2s all ease-in-out;
+
+		&:hover {
+			background-color: #ccc;
+		}
+
+		svg {
+			color: v.$color-font-light;
+			font-size: 0.8rem;
+			font-weight: 600;
+		}
+	}
+
+	span {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 34px;
+		border-right: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+	}
+}

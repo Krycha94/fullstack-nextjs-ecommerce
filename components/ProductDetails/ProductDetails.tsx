@@ -25,10 +25,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 		<div className={styles.product}>
 			<ProductImages images={images} />
 			<section className={styles.product__details}>
-				<p>{category}</p>
+				<p className={styles.product__category}>{category}</p>
 				<h2>{name}</h2>
 				<Stars stars={stars} reviews={reviews} />
-				<h5>
+				<h5 className={styles.product__price}>
 					{discount ? (
 						<>
 							<span>${(price * 0.9).toFixed(2)}</span>
@@ -38,11 +38,15 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 						<span>${price}</span>
 					)}
 				</h5>
-				<p>{description}</p>
+				<p className={styles.product__description}>{description}</p>
 				<AddToCart product={product} />
-				<div>
-					<p>In Stock: {stock}</p>
-					<p>Brand: {brand}</p>
+				<div className={styles.product__info}>
+					<p>
+						Available: <span className={styles.product__stock}>{stock}</span>
+					</p>
+					<p>
+						Brand: <span className={styles.product__brand}>{brand}</span>
+					</p>
 				</div>
 			</section>
 		</div>

@@ -1,8 +1,23 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
 .stars {
-  font-size: .9rem;
-  color: #ffb900;
-  display: flex;
-  align-items: center;
-  gap: 0.1rem;
-  margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+
+	&__container {
+		font-size: 0.9rem;
+		color: v.$color-stars;
+		display: flex;
+		align-items: center;
+		gap: 0.1rem;
+    padding-bottom: 0.2rem;
+	}
+
+	&__reviews {
+		font-size: 0.8rem;
+		color: v.$color-font-light;
+	}
 }
