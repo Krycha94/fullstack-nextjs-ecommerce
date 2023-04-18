@@ -1,0 +1,69 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.totals {
+	&__discount {
+		margin-bottom: 2rem;
+
+		p {
+			margin-bottom: 1rem;
+			font-weight: 600;
+			font-size: 1.2rem;
+		}
+	}
+
+	&__form {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+	}
+
+	&__formInput {
+		font-size: 0.8rem;
+		padding: 0.5rem;
+		border: 1px solid #ccc;
+		color: #ccc;
+		transition: 0.2s all ease-in-out;
+	}
+
+	&__formBtn {
+		border: 2px solid v.$color-font;
+		cursor: pointer;
+		padding: 0.4rem 0.8rem;
+		background-color: v.$color-font;
+		color: v.$color-bg;
+		transition: v.$transition;
+
+		&:hover {
+			background-color: v.$color-bg;
+			color: v.$color-font;
+			outline-color: v.$color-font;
+			border: 2px solid v.$color-font;
+		}
+	}
+
+	&__proceed {
+		background-color: v.$color-gray-light;
+		padding: 2rem;
+
+		h5,
+		p,
+		h4 {
+			font-weight: 500;
+			font-size: 1rem;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		h4 {
+			margin: 1rem 0 1rem;
+			font-weight: 600;
+		}
+	}
+
+	&__loginBtn {
+		width: 100%;
+		padding: 0.4rem 0.8rem;
+		cursor: pointer;
+	}
+}

@@ -5,6 +5,7 @@ import { useCartContext } from "@/context/CartContext";
 import CartColumns from "../CartColumns/CartColumns";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartContent.module.scss";
+import CartTotals from "../CartTotals/CartTotals";
 
 const CartContent = () => {
 	const { cart } = useCartContext();
@@ -32,7 +33,7 @@ const CartContent = () => {
 							<button>CLEAR CART</button>
 						</div>
 					</div>
-					<div>CartTotals</div>
+					<CartTotals />
 				</>
 			)}
 		</section>
