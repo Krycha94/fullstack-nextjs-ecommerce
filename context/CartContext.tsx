@@ -1,16 +1,17 @@
 "use client";
-
+import { products } from "@/utils/dummyData";
 import { createContext, useContext, useReducer, ReactNode } from "react";
 import cartReducer from "@/reducers/CartReducer";
 
 export const initialState = {
-	cart: ["product1", "product2"],
+	// cart: [],
+	cart: products,
 	amount: 5,
 };
 
 type CartContextType = {
-  //todo import product type
-	cart: string[];
+	//todo import product type
+	cart: any[];
 };
 
 const CartContext = createContext<CartContextType>(initialState);

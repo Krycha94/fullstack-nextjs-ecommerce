@@ -1,0 +1,48 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.cartContent {
+	background-color: #ddd;
+	@include m.container;
+	margin: 2rem auto;
+	padding: 0 0.9rem;
+	display: grid;
+	min-height: 60vh;
+
+	@include b.breakpoint(md) {
+		padding: 0 1.1rem;
+		margin: 5rem auto;
+	}
+
+	@include b.breakpoint(lg) {
+		grid-template-columns: 1fr 320px;
+	}
+
+	@media screen and (min-width: 1340px) {
+		padding: 0;
+	}
+
+	&__empty {
+		h2 {
+			margin-bottom: 2rem;
+		}
+
+		a {
+			padding: 0.8rem 1.2rem;
+			background-color: v.$color-font;
+			color: v.$color-bg;
+			transition: v.$transition;
+
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: v.$color-bg;
+				color: v.$color-font;
+				border: 1px solid v.$color-font;
+			}
+		}
+	}
+
+	
+}
