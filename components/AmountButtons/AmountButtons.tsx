@@ -5,11 +5,17 @@ type AmountButtonsProps = {
 	amount: number;
 	increase: () => void;
 	decrease: () => void;
+	cartView?: boolean;
 };
 
-const AmountButtons = ({ amount, increase, decrease }: AmountButtonsProps) => {
+const AmountButtons = ({
+	amount,
+	increase,
+	decrease,
+	cartView,
+}: AmountButtonsProps) => {
 	return (
-		<div className={styles.amountBtns}>
+		<div className={`${styles.amountBtns} ${cartView && styles.cartView}`}>
 			<button type="button" onClick={decrease}>
 				<FaMinus />
 			</button>

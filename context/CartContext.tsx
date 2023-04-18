@@ -1,11 +1,11 @@
 "use client";
-import { products } from "@/utils/dummyData";
+import { cartProducts, products } from "@/utils/dummyData";
 import { createContext, useContext, useReducer, ReactNode } from "react";
 import cartReducer from "@/reducers/CartReducer";
 
 export const initialState = {
 	// cart: [],
-	cart: products,
+	cart: cartProducts,
 	amount: 5,
 };
 

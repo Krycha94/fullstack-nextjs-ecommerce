@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useCartContext } from "@/context/CartContext";
-import styles from "./CartContent.module.scss";
 import CartColumns from "../CartColumns/CartColumns";
+import CartItem from "../CartItem/CartItem";
+import styles from "./CartContent.module.scss";
 
 const CartContent = () => {
 	const { cart } = useCartContext();
@@ -24,7 +25,7 @@ const CartContent = () => {
 					<div className={styles.cartContent__items}>
 						<CartColumns />
 						{cart?.map((item) => (
-							<div>Cart Item</div>
+							<CartItem key={item.id} {...item} />
 						))}
 						<div className={styles.cartContent__links}>
 							<Link href="/products">CONTINUE SHOPPING</Link>

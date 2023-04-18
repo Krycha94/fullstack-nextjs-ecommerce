@@ -266,3 +266,33 @@ export const products = [
 		id: "bvKOFC6RsKusU1KPxBwt",
 	},
 ];
+
+export const cartProducts = [
+	{
+		id: "bvKOFC6RsKusU1KPxBwtS",
+		size: "S",
+		amount: 3,
+		name: "Adidas T-Shirt Treofil",
+		image: "/products/man-tshirt-adidas-3",
+		price: 69.99,
+		max: 6,
+	},
+	{
+		id: "bvKOFC6RsKusU1KPxBwtM",
+		size: "M",
+		amount: 4,
+		name: "Nike T-Shirt Essential",
+		image: "/products/man-sneakers-newbalance-3",
+		price: 169.99,
+		max: 8,
+	},
+	{
+		id: "bvKOFC6RsKusU1KPxBwtL",
+		size: "L",
+		amount: 5,
+		name: "Adidas SST Track Pants",
+		image: "/products/woman-tshirt-nike-3",
+		price: 1169.99,
+		max: 10,
+	},
+];

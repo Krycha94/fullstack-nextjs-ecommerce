@@ -39,4 +39,12 @@
 		border-right: 1px solid #ccc;
 		border-left: 1px solid #ccc;
 	}
+
+	&.cartView {
+		width: 80px;
+
+		button,span {
+			height: 28px;
+		}
+	}
 }

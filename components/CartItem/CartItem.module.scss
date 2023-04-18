@@ -1,0 +1,35 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.product {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr auto;
+	align-items: center;
+	column-gap: 1rem;
+	padding: 1.8rem 0;
+	border-bottom: 1px solid #ccc;
+
+	&__title {
+		gap: 0.5rem;
+		display: flex;
+		flex-direction: column;
+
+		@media screen and (min-width: 1340px) {
+			gap: 1rem;
+			flex-direction: row;
+			align-items: center;
+
+			img {
+				width: 120px;
+				height: 120px;
+			}
+		}
+	}
+
+	&__deleteBtn {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+	}
+}

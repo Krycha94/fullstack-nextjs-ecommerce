@@ -3,11 +3,11 @@
 @use "@/styles/variables" as v;
 
 .cartContent {
-	background-color: #ddd;
 	@include m.container;
 	margin: 2rem auto;
 	padding: 0 0.9rem;
 	display: grid;
+	gap: 3rem;
 	min-height: 60vh;
 
 	@include b.breakpoint(md) {
@@ -16,7 +16,7 @@
 	}
 
 	@include b.breakpoint(lg) {
-		grid-template-columns: 1fr 320px;
+		grid-template-columns: 1fr 360px;
 	}
 
 	@media screen and (min-width: 1340px) {
@@ -44,5 +44,44 @@
 		}
 	}
 
-	
+	&__links {
+		text-align: center;
+		padding: 1.8rem 0;
+		display: flex;
+		flex-direction: column;
+
+		@include b.breakpoint(md) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		a {
+			padding: 0.4rem 0.8rem;
+			background-color: transparent;
+			border: 1px solid #ccc;
+			cursor: pointer;
+			color: v.$color-font-light;
+			transition: 0.2s all ease-in-out;
+
+			&:hover {
+				background-color: #ccc;
+			}
+		}
+
+		button {
+			border: 2px solid v.$color-bg;
+			cursor: pointer;
+			padding: 0.4rem 0.8rem;
+			background-color: v.$color-font;
+			color: v.$color-bg;
+			transition: v.$transition;
+
+			&:hover {
+				background-color: v.$color-bg;
+				color: v.$color-font;
+				outline-color: v.$color-font;
+				border: 2px solid v.$color-font;
+			}
+		}
+	}
 }
