@@ -11,6 +11,27 @@ type AddToCartProps = {
 const AddToCart = ({ product }: AddToCartProps) => {
 	const { id, stock, size } = product;
 	const [mainSize, setMainSize] = useState(size[0]);
+	const [amount, setAmount] = useState(1);
+
+	const increase = () => {
+		setAmount((prev) => {
+			let tempAmount = prev + 1;
+			if (tempAmount > stock) {
+				tempAmount = stock;
+			}
+			return tempAmount;
+		});
+	};
+
+	const decrease = () => {
+		setAmount((prev) => {
+			let tempAmount = prev - 1;
+			if (tempAmount < 1) {
+				tempAmount = 1;
+			}
+			return tempAmount;
+		});
+	};
 
 	return (
 		<section>
@@ -31,7 +52,11 @@ const AddToCart = ({ product }: AddToCartProps) => {
 				</div>
 			</div>
 			<div className={styles.btnContainer}>
-				<AmountButtons />
+				<AmountButtons
+					amount={amount}
+					increase={increase}
+					decrease={decrease}
+				/>
 				<button className={styles.btnContainer__btn}>Add to cart</button>
 			</div>
 		</section>

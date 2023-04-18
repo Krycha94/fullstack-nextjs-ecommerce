@@ -1,14 +1,20 @@
 import styles from "./AmountButtons.module.scss";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const AmountButtons = () => {
+type AmountButtonsProps = {
+	amount: number;
+	increase: () => void;
+	decrease: () => void;
+};
+
+const AmountButtons = ({ amount, increase, decrease }: AmountButtonsProps) => {
 	return (
 		<div className={styles.amountBtns}>
-			<button type="button">
+			<button type="button" onClick={decrease}>
 				<FaMinus />
 			</button>
-			<span>5</span>
-			<button type="button">
+			<span>{amount}</span>
+			<button type="button" onClick={increase}>
 				<FaPlus />
 			</button>
 		</div>
