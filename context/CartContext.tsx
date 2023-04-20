@@ -19,6 +19,7 @@ type addToCartType = (
 type CartContextType = {
 	cart: CartItemType[];
 	addToCart: addToCartType;
+	removeFromCart: (id: string) => void;
 };
 
 const CartContext = createContext<CartContextType>(null!);
@@ -38,8 +39,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 		});
 	};
 
+	const removeFromCart = (id: string) => {
+		dispatch({ type: "REMOVE_FROM_CART", payload: id });
+	};
+
 	return (
-		<CartContext.Provider value={{ ...state, addToCart }}>
+		<CartContext.Provider value={{ ...state, addToCart, removeFromCart }}>
 			{children}
 		</CartContext.Provider>
 	);

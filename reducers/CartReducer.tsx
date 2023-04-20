@@ -15,7 +15,12 @@ type AddToCartAction = {
 	};
 };
 
-type CartActionType = AddToCartAction;
+type RemoveFromCartAction = {
+	type: "REMOVE_FROM_CART";
+	payload: string;
+};
+
+type CartActionType = AddToCartAction | RemoveFromCartAction;
 
 const cartReducer = (state: CartStateType, action: CartActionType) => {
 	if (action.type === "ADD_TO_CART") {
@@ -49,6 +54,11 @@ const cartReducer = (state: CartStateType, action: CartActionType) => {
 			};
 			return { ...state, cart: [...state.cart, newItem] };
 		}
+	}
+
+	if (action.type === "REMOVE_FROM_CART") {
+		const tempCart = state.cart.filter((item) => item.id !== action.payload);
+		return { ...state, cart: tempCart };
 	}
 
 	return state;
