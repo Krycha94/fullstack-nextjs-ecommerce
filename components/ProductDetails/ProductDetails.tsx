@@ -1,10 +1,11 @@
 import AddToCart from "../AddToCart/AddToCart";
 import ProductImages from "../ProductImages/ProductImages";
 import Stars from "../Stars/Stars";
+import ProductType from "@/types/ProductType";
 import styles from "./ProductDetails.module.scss";
 
 type ProductDetailsProps = {
-	product: any;
+	product: ProductType;
 };
 
 const ProductDetails = ({ product }: ProductDetailsProps) => {

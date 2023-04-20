@@ -4,8 +4,7 @@ import ProductType from "@/types/ProductType";
 import styles from "./Products.module.scss";
 
 type ProductsProps = {
-	// products: ProductType[];
-	products: any;
+	products: ProductType[];
 };
 
 const Products = ({ products }: ProductsProps) => {

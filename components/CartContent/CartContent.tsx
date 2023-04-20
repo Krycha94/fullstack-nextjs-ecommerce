@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useCartContext } from "@/context/CartContext";
 import CartColumns from "../CartColumns/CartColumns";
 import CartItem from "../CartItem/CartItem";
-import styles from "./CartContent.module.scss";
 import CartTotals from "../CartTotals/CartTotals";
+import styles from "./CartContent.module.scss";
 
 const CartContent = () => {
 	const { cart } = useCartContext();

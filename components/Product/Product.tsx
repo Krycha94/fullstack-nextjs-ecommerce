@@ -12,7 +12,6 @@ const Product = ({
 	price,
 	discount,
 	stars,
-	reviews,
 }: ProductType) => {
 	return (
 		<article className={styles.product}>

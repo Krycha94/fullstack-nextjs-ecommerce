@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { useCartContext } from "@/context/CartContext";
 import AmountButtons from "../AmountButtons/AmountButtons";
+import ProductType from "@/types/ProductType";
 import styles from "./AddToCart.module.scss";
 
 type AddToCartProps = {
-	product: any;
+	product: ProductType;
 };
 
 const AddToCart = ({ product }: AddToCartProps) => {
+	const { addToCart } = useCartContext();
 	const { id, stock, size } = product;
 	const [mainSize, setMainSize] = useState(size[0]);
 	const [amount, setAmount] = useState(1);
@@ -38,7 +41,7 @@ const AddToCart = ({ product }: AddToCartProps) => {
 			<div className={styles.size}>
 				<span className={styles.size__title}>Size</span>
 				<div className={styles.size__container}>
-					{size?.map((s: string, index: number) => (
+					{size?.map((s, index) => (
 						<button
 							key={index}
 							className={`${styles.size__btn} ${
@@ -57,7 +60,12 @@ const AddToCart = ({ product }: AddToCartProps) => {
 					increase={increase}
 					decrease={decrease}
 				/>
-				<button className={styles.btnContainer__btn}>Add to cart</button>
+				<button
+					onClick={() => addToCart(id, mainSize, amount, product)}
+					className={styles.btnContainer__btn}
+				>
+					Add to cart
+				</button>
 			</div>
 		</section>
 	);

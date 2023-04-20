@@ -1,9 +1,9 @@
 import Product from "../Product/Product";
+import ProductType from "@/types/ProductType";
 import styles from "./ProductList.module.scss";
 
 type ProductsListProps = {
-	// products: ProductType[];
-	products: any;
+	products: ProductType[];
 };
 
 const ProductList = ({ products }: ProductsListProps) => {
@@ -13,7 +13,7 @@ const ProductList = ({ products }: ProductsListProps) => {
 
 	return (
 		<section className={styles.products}>
-			{products?.map((product: any) => (
+			{products?.map((product) => (
 				<Product key={product.id} {...product} />
 			))}
 		</section>
