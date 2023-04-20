@@ -1,16 +1,21 @@
-import { products } from "@/utils/dummyData";
+import { db } from "@/firebase/config";
+import { getDocs, collection } from "firebase/firestore";
 import Products from "@/components/Products/Products";
+import ProductType from "@/types/ProductType";
 
 export const metadata = {
 	title: "Krycha Store - Products",
-	description:
-		"Discover the latest trends in Krycha store, including women, men and kids clothing. Shop the best outfits for this season at our online store",
-	icons: {
-		icon: "/cloth-icon.png",
-	},
 };
 
-const ProductsPage = () => {
+const ProductsPage = async () => {
+	//firebase database fetch all products
+	const productsCollectionRef = collection(db, "products");
+	const data = await getDocs(productsCollectionRef);
+	const products = data.docs.map((doc) => ({
+		...doc.data(),
+		id: doc.id,
+	})) as ProductType[];
+
 	return <Products products={products} />;
 };
 export default ProductsPage;

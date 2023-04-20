@@ -1,12 +1,15 @@
+type brand = "adidas" | "reebok" | "nike" | "new balance";
+
 type category = "men" | "women" | "kids";
 
 type size = "XS" | "S" | "M" | "L" | "XL";
 
 type ProductType = {
-	brand: string;
+	brand: brand;
 	category: category;
-	description: number;
+	description: string;
 	discount: boolean;
+	featured?: boolean;
 	id: string;
 	images: {
 		id: string;

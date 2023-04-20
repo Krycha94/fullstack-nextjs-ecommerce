@@ -1,14 +1,16 @@
 import { db } from "@/firebase/config";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, where } from "firebase/firestore";
 import Hero from "@/components/Hero/Hero";
 import Collections from "@/components/Collections/Collections";
 import PopularProducts from "@/components/PopularProducts/PopularProducts";
 import Contact from "@/components/Contact/Contact";
 import ProductType from "@/types/ProductType";
 
-export default async function Home() {
-	const productsCollectionRef = collection(db, "featured");
-	const data = await getDocs(productsCollectionRef);
+const Home = async () => {
+	//firebase database fetch featured products only
+	const productsCollectionRef = collection(db, "products");
+	const q = query(productsCollectionRef, where("featured", "==", true));
+	const data = await getDocs(q);
 	const products = data.docs.map((doc) => ({
 		...doc.data(),
 		id: doc.id,
@@ -22,4 +24,6 @@ export default async function Home() {
 			<Contact />
 		</>
 	);
-}
+};
+
+export default Home;
