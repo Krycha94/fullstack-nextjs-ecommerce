@@ -8,7 +8,7 @@ import CartTotals from "../CartTotals/CartTotals";
 import styles from "./CartContent.module.scss";
 
 const CartContent = () => {
-	const { cart } = useCartContext();
+	const { cart, clearCart } = useCartContext();
 
 	const emptyCart = (
 		<div className={styles.cartContent__empty}>
@@ -30,7 +30,7 @@ const CartContent = () => {
 						))}
 						<div className={styles.cartContent__links}>
 							<Link href="/products">CONTINUE SHOPPING</Link>
-							<button>CLEAR CART</button>
+							<button onClick={clearCart}>CLEAR CART</button>
 						</div>
 					</div>
 					<CartTotals />

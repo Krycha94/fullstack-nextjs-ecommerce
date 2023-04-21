@@ -6,14 +6,14 @@ import CartItemType from "@/types/CartItemType";
 import styles from "./CartItem.module.scss";
 
 const CartItem = ({ id, image, name, size, price, amount }: CartItemType) => {
-	const { removeFromCart } = useCartContext();
+	const { removeFromCart, toggleAmount } = useCartContext();
 
 	const increase = () => {
-		console.log("inc");
+		toggleAmount(id, "inc");
 	};
 
 	const decrease = () => {
-		console.log("dec");
+		toggleAmount(id, "dec");
 	};
 
 	return (

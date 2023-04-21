@@ -20,6 +20,8 @@ type CartContextType = {
 	cart: CartItemType[];
 	addToCart: addToCartType;
 	removeFromCart: (id: string) => void;
+	toggleAmount: (id: string, value: string) => void;
+	clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType>(null!);
@@ -43,8 +45,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 		dispatch({ type: "REMOVE_FROM_CART", payload: id });
 	};
 
+	const clearCart = () => {
+		dispatch({ type: "CLEAR_CART" });
+	};
+
+	const toggleAmount = (id: string, value: string) => {
+		dispatch({ type: "TOGGLE_AMOUNT", payload: { id, value } });
+	};
+
 	return (
-		<CartContext.Provider value={{ ...state, addToCart, removeFromCart }}>
+		<CartContext.Provider
+			value={{ ...state, addToCart, removeFromCart, clearCart, toggleAmount }}
+		>
 			{children}
 		</CartContext.Provider>
 	);

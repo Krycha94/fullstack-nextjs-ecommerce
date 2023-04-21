@@ -20,7 +20,20 @@ type RemoveFromCartAction = {
 	payload: string;
 };
 
-type CartActionType = AddToCartAction | RemoveFromCartAction;
+type ClearCartAction = {
+	type: "CLEAR_CART";
+};
+
+type ToggleAmountAction = {
+	type: "TOGGLE_AMOUNT";
+	payload: { id: string; value: string };
+};
+
+type CartActionType =
+	| AddToCartAction
+	| RemoveFromCartAction
+	| ToggleAmountAction
+	| ClearCartAction;
 
 const cartReducer = (state: CartStateType, action: CartActionType) => {
 	if (action.type === "ADD_TO_CART") {
@@ -58,6 +71,35 @@ const cartReducer = (state: CartStateType, action: CartActionType) => {
 
 	if (action.type === "REMOVE_FROM_CART") {
 		const tempCart = state.cart.filter((item) => item.id !== action.payload);
+		return { ...state, cart: tempCart };
+	}
+
+	if (action.type === "CLEAR_CART") {
+		return { ...state, cart: [] };
+	}
+
+	if (action.type === "TOGGLE_AMOUNT") {
+		const { id, value } = action.payload;
+		const tempCart = state.cart.map((item) => {
+			if (item.id === id) {
+				if (value === "inc") {
+					let newAmount = item.amount + 1;
+					if (newAmount > item.max) {
+						newAmount = item.max;
+					}
+					return { ...item, amount: newAmount };
+				} else {
+					let newAmount = item.amount - 1;
+					if (newAmount < 1) {
+						newAmount = 1;
+					}
+					return { ...item, amount: newAmount };
+				}
+			} else {
+				return item;
+			}
+		});
+
 		return { ...state, cart: tempCart };
 	}
 
