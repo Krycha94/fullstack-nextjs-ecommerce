@@ -11,8 +11,11 @@ import cartReducer from "@/reducers/CartReducer";
 import ProductType from "@/types/ProductType";
 import CartItemType from "@/types/CartItemType";
 
+const getLocalStorageCart = () =>
+	JSON.parse(localStorage.getItem("cart") || "") || [];
+
 export const initialState = {
-	cart: [],
+	cart: getLocalStorageCart(),
 	totalItems: 0,
 	totalAmount: 0,
 	shippingFee: 9.99,
@@ -67,6 +70,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 	useEffect(() => {
 		dispatch({ type: "COUNT_TOTALS" });
+		localStorage.setItem("cart", JSON.stringify(state.cart));
 	}, [state.cart]);
 
 	return (
