@@ -1,4 +1,9 @@
+"use client";
+
+import { useEffect, useReducer } from "react";
+import filterReducer from "@/reducers/FilterReducer";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import Filters from "../Filters/Filters";
 import ProductList from "../ProductList/ProductList";
 import ProductType from "@/types/ProductType";
 import styles from "./Products.module.scss";
@@ -8,14 +13,32 @@ type ProductsProps = {
 };
 
 const Products = ({ products }: ProductsProps) => {
+	const [state, dispatch] = useReducer(filterReducer, {
+		allProducts: products,
+		filteredProducts: products,
+		filters: { text: "" },
+	});
+	console.log(state);
+
+	const updateFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+		let name = e.target.name;
+		let value = e.target.value;
+
+		dispatch({ type: "UPDATE_FILTERS", payload: { name, value } });
+	};
+
+	useEffect(() => {
+		dispatch({ type: "FILTER_PRODUCTS" });
+	}, [state.filters]);
+
 	return (
 		<>
 			<Breadcrumbs title="products" />
 			<div className={styles.products}>
-				<div>Filters component</div>
+				<Filters state={{ ...state }} updateFilters={updateFilters} />
 				<div>
 					<div>Sort component</div>
-					<ProductList products={products} />
+					<ProductList products={state.filteredProducts} />
 				</div>
 			</div>
 		</>

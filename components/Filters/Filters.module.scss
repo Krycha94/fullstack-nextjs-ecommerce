@@ -1,0 +1,16 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.filters {
+	border: solid 1px red;
+	background-color: #bbb;
+	padding: 1rem;
+
+	&__searchInput {
+		font-size: 0.9rem;
+		padding: 0.5rem;
+		border: 1px solid #ccc;
+		transition: 0.2s all ease-in-out;
+	}
+}

@@ -8,7 +8,7 @@ type ProductsListProps = {
 
 const ProductList = ({ products }: ProductsListProps) => {
 	if (products.length < 1) {
-		return <p>Sorrym no products matched your search...</p>;
+		return <p>Sorry no products matched your search...</p>;
 	}
 
 	return (

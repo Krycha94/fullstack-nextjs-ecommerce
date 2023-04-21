@@ -8,6 +8,7 @@
 	margin: 2rem auto;
 	padding: 0 0.9rem;
 	display: grid;
+	gap: 3rem;
 
 	@include b.breakpoint(md) {
 		padding: 0 1.1rem;
