@@ -1,12 +1,21 @@
 "use client";
 
-import { createContext, useContext, useReducer, ReactNode } from "react";
+import {
+	createContext,
+	useEffect,
+	useContext,
+	useReducer,
+	ReactNode,
+} from "react";
 import cartReducer from "@/reducers/CartReducer";
 import ProductType from "@/types/ProductType";
 import CartItemType from "@/types/CartItemType";
 
 export const initialState = {
 	cart: [],
+	totalItems: 0,
+	totalAmount: 0,
+	shippingFee: 9.99,
 };
 
 type addToCartType = (
@@ -18,6 +27,9 @@ type addToCartType = (
 
 type CartContextType = {
 	cart: CartItemType[];
+	totalAmount: number;
+	totalItems: number;
+	shippingFee: number;
 	addToCart: addToCartType;
 	removeFromCart: (id: string) => void;
 	toggleAmount: (id: string, value: string) => void;
@@ -52,6 +64,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 	const toggleAmount = (id: string, value: string) => {
 		dispatch({ type: "TOGGLE_AMOUNT", payload: { id, value } });
 	};
+
+	useEffect(() => {
+		dispatch({ type: "COUNT_TOTALS" });
+	}, [state.cart]);
 
 	return (
 		<CartContext.Provider

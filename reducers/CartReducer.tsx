@@ -3,6 +3,9 @@ import ProductType from "@/types/ProductType";
 
 type CartStateType = {
 	cart: CartItemType[];
+	totalAmount: number;
+	totalItems: number;
+	shippingFee: number;
 };
 
 type AddToCartAction = {
@@ -29,11 +32,16 @@ type ToggleAmountAction = {
 	payload: { id: string; value: string };
 };
 
+type CountTotalsAction = {
+	type: "COUNT_TOTALS";
+};
+
 type CartActionType =
 	| AddToCartAction
 	| RemoveFromCartAction
 	| ToggleAmountAction
-	| ClearCartAction;
+	| ClearCartAction
+	| CountTotalsAction;
 
 const cartReducer = (state: CartStateType, action: CartActionType) => {
 	if (action.type === "ADD_TO_CART") {
@@ -103,8 +111,19 @@ const cartReducer = (state: CartStateType, action: CartActionType) => {
 		return { ...state, cart: tempCart };
 	}
 
+	if (action.type === "COUNT_TOTALS") {
+		let newItems = 0;
+		let newAmount = 0;
+
+		state.cart.forEach((item) => {
+			newItems += item.amount;
+			newAmount += item.amount * item.price;
+		});
+
+		return { ...state, totalItems: newItems, totalAmount: newAmount };
+	}
+
 	return state;
-	// throw new Error(`No Matching "${action.type}" - action type`);
 };
 
 export default cartReducer;
