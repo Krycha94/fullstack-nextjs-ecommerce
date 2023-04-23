@@ -1,7 +1,7 @@
 type FilterStateType = {
 	allProducts: any;
 	filteredProducts: any;
-	filters: { text: string };
+	filters: { text: string; category: string };
 };
 
 type UpdateFiltersAction = {
@@ -26,7 +26,7 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 
 	if (action.type === "FILTER_PRODUCTS") {
 		const { allProducts } = state;
-		const { text } = state.filters;
+		const { text, category } = state.filters;
 		let tempProducts = [...allProducts];
 
 		if (text) {
@@ -34,6 +34,12 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 				product.name.toLowerCase().includes(text.toLowerCase())
 			);
 		}
+		if (category !== "all") {
+			tempProducts = tempProducts.filter(
+				(product) => product.category === category
+			);
+		}
+
 		return { ...state, filteredProducts: tempProducts };
 	}
 

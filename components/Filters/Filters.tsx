@@ -1,14 +1,26 @@
+import { getUniqueValues } from "@/utils/helpers";
+import ProductType from "@/types/ProductType";
+import FiltersType from "@/types/FiltersType";
 import styles from "./Filters.module.scss";
 
 type FiltersProps = {
-	state: { filters: { text: string } };
-	updateFilters: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	state: {
+		allProducts: ProductType[];
+		filters: {
+			text: string;
+			category: string;
+		};
+	};
+	updateFilters: (e: FiltersType) => void;
 };
 
 const Filters = ({ state, updateFilters }: FiltersProps) => {
 	const {
-		filters: { text },
+		allProducts,
+		filters: { text, category },
 	} = state;
+
+	const categories = getUniqueValues(allProducts, "category");
 
 	return (
 		<section className={styles.filters}>
@@ -22,6 +34,24 @@ const Filters = ({ state, updateFilters }: FiltersProps) => {
 						value={text}
 						onChange={updateFilters}
 					/>
+				</div>
+				<div className={styles.filters__formControl}>
+					<h5>Category</h5>
+					<div>
+						{categories.map((c, index) => (
+							<button
+								key={index}
+								type="button"
+								name="category"
+								onClick={updateFilters}
+								className={`${styles.filters__categoryBtn} ${
+									c === category && styles.active
+								}`}
+							>
+								{c}
+							</button>
+						))}
+					</div>
 				</div>
 			</form>
 		</section>

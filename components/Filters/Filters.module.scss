@@ -13,4 +13,12 @@
 		border: 1px solid #ccc;
 		transition: 0.2s all ease-in-out;
 	}
+
+	&__categoryBtn {
+		background-color: lightsalmon;
+	}
+
+	&__categoryBtn.active {
+		background-color: red;
+	}
 }

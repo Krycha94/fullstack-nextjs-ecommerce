@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Filters from "../Filters/Filters";
 import ProductList from "../ProductList/ProductList";
 import ProductType from "@/types/ProductType";
+import FiltersType from "@/types/FiltersType";
 import styles from "./Products.module.scss";
 
 type ProductsProps = {
@@ -16,13 +17,19 @@ const Products = ({ products }: ProductsProps) => {
 	const [state, dispatch] = useReducer(filterReducer, {
 		allProducts: products,
 		filteredProducts: products,
-		filters: { text: "" },
+		filters: { text: "", category: "all" },
 	});
-	console.log(state);
+	// console.log(state.filters);
 
-	const updateFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
-		let name = e.target.name;
-		let value = e.target.value;
+	const updateFilters = (e: FiltersType) => {
+		let name = e.currentTarget.name;
+		let value = e.currentTarget.value;
+
+		if (name === "category") {
+			value = e.currentTarget.textContent as string;
+		}
+
+		console.log(name, value);
 
 		dispatch({ type: "UPDATE_FILTERS", payload: { name, value } });
 	};
