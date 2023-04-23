@@ -11,11 +11,14 @@ import cartReducer from "@/reducers/CartReducer";
 import ProductType from "@/types/ProductType";
 import CartItemType from "@/types/CartItemType";
 
-const getLocalStorageCart = () =>
-	JSON.parse(localStorage.getItem("cart") || "") || [];
+//NextJs using server side render, the window object is not defined there. To fix this issue, we need to wait until the page has been mounted on the client prior to accessing localStorage
+const getCartLocaleStorage =
+	(typeof window !== "undefined" &&
+		JSON.parse(localStorage.getItem("cart")!)) ||
+	[];
 
 export const initialState = {
-	cart: getLocalStorageCart(),
+	cart: getCartLocaleStorage,
 	totalItems: 0,
 	totalAmount: 0,
 	shippingFee: 9.99,
