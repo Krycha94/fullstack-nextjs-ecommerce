@@ -3,7 +3,16 @@ import ProductType from "@/types/ProductType";
 type FilterStateType = {
 	allProducts: ProductType[];
 	filteredProducts: ProductType[];
-	filters: { text: string; category: string; brand: string; size: string };
+	filters: {
+		text: string;
+		category: string;
+		brand: string;
+		size: string;
+		minPrice: number;
+		maxPrice: number;
+		price: number;
+		discount: boolean;
+	};
 };
 
 type UpdateFiltersAction = {
@@ -28,7 +37,7 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 
 	if (action.type === "FILTER_PRODUCTS") {
 		const { allProducts } = state;
-		const { text, category, brand, size } = state.filters;
+		const { text, category, brand, size, price, discount } = state.filters;
 		let tempProducts = [...allProducts];
 
 		if (text) {
@@ -47,6 +56,14 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 		if (size !== "all") {
 			tempProducts = tempProducts.filter((product) =>
 				product.size.includes(size as any)
+			);
+		}
+		if (price) {
+			tempProducts = tempProducts.filter((product) => product.price <= +price);
+		}
+		if (discount) {
+			tempProducts = tempProducts.filter(
+				(product) => product.discount === true
 			);
 		}
 

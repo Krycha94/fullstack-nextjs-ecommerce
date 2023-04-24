@@ -11,6 +11,10 @@ type FiltersProps = {
 			category: string;
 			brand: string;
 			size: string;
+			minPrice: number;
+			maxPrice: number;
+			price: number;
+			discount: boolean;
 		};
 	};
 	updateFilters: (e: FiltersType) => void;
@@ -19,7 +23,16 @@ type FiltersProps = {
 const Filters = ({ state, updateFilters }: FiltersProps) => {
 	const {
 		allProducts,
-		filters: { text, category, brand, size },
+		filters: {
+			text,
+			category,
+			brand,
+			size,
+			minPrice,
+			maxPrice,
+			price,
+			discount,
+		},
 	} = state;
 
 	const categories = getUniqueValues(allProducts, "category");
@@ -107,6 +120,33 @@ const Filters = ({ state, updateFilters }: FiltersProps) => {
 							{s}
 						</button>
 					))}
+				</div>
+				<div className={styles.filters__formControl}>
+					<h5>PRICE</h5>
+					<input
+						type="range"
+						name="price"
+						onChange={updateFilters}
+						min={minPrice}
+						max={maxPrice}
+						value={price}
+						step={50}
+					/>
+					<div>
+						<p>
+							${minPrice} - ${price}
+						</p>
+					</div>
+				</div>
+				<div className={styles.filters__formControl}>
+					<label htmlFor="discount">Discount</label>
+					<input
+						type="checkbox"
+						name="discount"
+						id="discount"
+						onChange={updateFilters}
+						checked={discount}
+					/>
 				</div>
 			</form>
 		</section>

@@ -6,7 +6,6 @@ import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Filters from "../Filters/Filters";
 import ProductList from "../ProductList/ProductList";
 import ProductType from "@/types/ProductType";
-import FiltersType from "@/types/FiltersType";
 import styles from "./Products.module.scss";
 
 type ProductsProps = {
@@ -17,16 +16,29 @@ const Products = ({ products }: ProductsProps) => {
 	const [state, dispatch] = useReducer(filterReducer, {
 		allProducts: products,
 		filteredProducts: products,
-		filters: { text: "", category: "all", brand: "all", size: "all" },
+		filters: {
+			text: "",
+			category: "all",
+			brand: "all",
+			size: "all",
+			minPrice: 0,
+			maxPrice: 1700,
+			price: 1700,
+			discount: false,
+		},
 	});
 	// console.log(state.filters);
 
-	const updateFilters = (e: FiltersType) => {
-		let name = e.currentTarget.name;
-		let value = e.currentTarget.value;
+	const updateFilters = (e: any) => {
+		let name = e.target.name;
+		let value = e.target.value;
 
 		if (name === "category" || name === "brand" || name === "size") {
-			value = e.currentTarget.textContent as string;
+			value = e.target.textContent;
+		}
+
+		if (name === "discount") {
+			value = e.target.checked;
 		}
 
 		console.log(name, value);
