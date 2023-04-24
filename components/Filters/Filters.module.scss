@@ -3,9 +3,22 @@
 @use "@/styles/variables" as v;
 
 .filters {
-	border: solid 1px red;
-	background-color: #bbb;
-	padding: 1rem;
+	&__content {
+		@include b.breakpoint(md) {
+			position: sticky;
+			//todo calculate nav height
+			top: 5rem;
+		}
+	}
+
+	&__formControl {
+		margin-bottom: 1.6rem;
+
+		h5 {
+			margin-bottom: 0.5rem;
+			font-size: 1rem;
+		}
+	}
 
 	&__searchInput {
 		font-size: 0.9rem;
@@ -17,18 +30,77 @@
 	&__category,
 	&__brand {
 		display: flex;
-		// justify-content: space-between;
+		align-items: center;
+		gap: 0.2rem;
+
+		p {
+			font-size: 0.8rem;
+		}
 	}
 
 	&__categoryBtn,
-	&__brandBtn,
-	&__sizeBtn {
-		background-color: lightsalmon;
+	&__brandBtn {
+		text-transform: capitalize;
+		cursor: pointer;
+		color: v.$color-font;
+		background-color: transparent;
+		border: none;
+		padding: 0.1rem;
 	}
 
 	&__categoryBtn.active,
-	&__brandBtn.active,
+	&__brandBtn.active {
+		color: v.$color-primary;
+	}
+
+	&__sizeContainer {
+		max-width: 200px;
+	}
+
+	&__sizeBtn {
+		padding: 0.3rem 0.6rem;
+		width: 50px;
+		margin-right: 0.5rem;
+		margin-bottom: 0.5rem;
+		background-color: transparent;
+		border: 1px solid #ccc;
+		cursor: pointer;
+		color: v.$color-font-light;
+	}
+
 	&__sizeBtn.active {
-		background-color: red;
+		color: v.$color-primary;
+		border-color: v.$color-primary;
+	}
+
+	&__priceInput {
+		width: 70%;
+		max-width: 200px;
+		accent-color: v.$color-primary;
+	}
+
+	&__discountContainer {
+		display: flex;
+		align-items: center;
+	}
+
+	&__discountInput {
+		accent-color: v.$color-primary;
+		margin-left: 0.5rem;
+	}
+
+	&__resetBtn {
+		cursor: pointer;
+		padding: 0.4rem 1.2rem;
+		background-color: v.$color-font;
+		color: v.$color-bg;
+		border: 1px solid v.$color-font;
+		transition: v.$transition;
+
+		&:hover {
+			background-color: v.$color-bg;
+			color: v.$color-font;
+			border: 1px solid v.$color-font;
+		}
 	}
 }

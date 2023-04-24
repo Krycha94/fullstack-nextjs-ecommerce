@@ -27,7 +27,6 @@ const Products = ({ products }: ProductsProps) => {
 			discount: false,
 		},
 	});
-	// console.log(state.filters);
 
 	const updateFilters = (e: any) => {
 		let name = e.target.name;
@@ -41,9 +40,11 @@ const Products = ({ products }: ProductsProps) => {
 			value = e.target.checked;
 		}
 
-		console.log(name, value);
-
 		dispatch({ type: "UPDATE_FILTERS", payload: { name, value } });
+	};
+
+	const resetFilters = () => {
+		dispatch({ type: "RESET_FILTERS" });
 	};
 
 	useEffect(() => {
@@ -54,7 +55,11 @@ const Products = ({ products }: ProductsProps) => {
 		<>
 			<Breadcrumbs title="products" />
 			<div className={styles.products}>
-				<Filters state={{ ...state }} updateFilters={updateFilters} />
+				<Filters
+					state={{ ...state }}
+					updateFilters={updateFilters}
+					resetFilters={resetFilters}
+				/>
 				<div>
 					<div>Sort component</div>
 					<ProductList products={state.filteredProducts} />

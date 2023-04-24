@@ -3,7 +3,6 @@
 @use "@/styles/variables" as v;
 
 .products {
-	background-color: #ddd;
 	@include m.container;
 	margin: 2rem auto;
 	padding: 0 0.9rem;
@@ -13,7 +12,7 @@
 	@include b.breakpoint(md) {
 		padding: 0 1.1rem;
 		margin: 5rem auto;
-		grid-template-columns: 300px 1fr;
+		grid-template-columns: 250px 1fr;
 	}
 
 	@media screen and (min-width: 1340px) {

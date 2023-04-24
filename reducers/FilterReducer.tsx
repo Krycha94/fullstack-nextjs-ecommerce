@@ -27,7 +27,14 @@ type FilterProductsAction = {
 	type: "FILTER_PRODUCTS";
 };
 
-type FilterActionType = UpdateFiltersAction | FilterProductsAction;
+type ResetFiltersAction = {
+	type: "RESET_FILTERS";
+};
+
+type FilterActionType =
+	| UpdateFiltersAction
+	| FilterProductsAction
+	| ResetFiltersAction;
 
 const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 	if (action.type === "UPDATE_FILTERS") {
@@ -68,6 +75,23 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 		}
 
 		return { ...state, filteredProducts: tempProducts };
+	}
+
+	if (action.type === "RESET_FILTERS") {
+		return {
+			...state,
+			filters: {
+				...state.filters,
+				text: "",
+				category: "all",
+				brand: "all",
+				size: "all",
+				minPrice: 0,
+				maxPrice: 1700,
+				price: 1700,
+				discount: false,
+			},
+		};
 	}
 
 	return state;
