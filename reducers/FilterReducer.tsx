@@ -13,6 +13,7 @@ type FilterStateType = {
 		price: number;
 		discount: boolean;
 	};
+	sort: string;
 };
 
 type UpdateFiltersAction = {
@@ -31,10 +32,21 @@ type ResetFiltersAction = {
 	type: "RESET_FILTERS";
 };
 
+type UpdateSortAction = {
+	type: "UPDATE_SORT";
+	payload: string;
+};
+
+type SortProductsAction = {
+	type: "SORT_PRODUCTS";
+};
+
 type FilterActionType =
 	| UpdateFiltersAction
 	| FilterProductsAction
-	| ResetFiltersAction;
+	| ResetFiltersAction
+	| UpdateSortAction
+	| SortProductsAction;
 
 const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 	if (action.type === "UPDATE_FILTERS") {
@@ -92,6 +104,28 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 				discount: false,
 			},
 		};
+	}
+
+	if (action.type === "UPDATE_SORT") {
+		return { ...state, sort: action.payload };
+	}
+
+	if (action.type === "SORT_PRODUCTS") {
+		const { sort, filteredProducts } = state;
+		const tempProducts = [...filteredProducts];
+		if (sort === "price-lowest") {
+			tempProducts.sort((a, b) => a.price - b.price);
+		}
+		if (sort === "price-highest") {
+			tempProducts.sort((a, b) => b.price - a.price);
+		}
+		if (sort === "name-a") {
+			tempProducts.sort((a, b) => a.name.localeCompare(b.name));
+		}
+		if (sort === "name-z") {
+			tempProducts.sort((a, b) => b.name.localeCompare(a.name));
+		}
+		return { ...state, filteredProducts: tempProducts };
 	}
 
 	return state;

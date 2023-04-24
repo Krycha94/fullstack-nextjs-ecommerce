@@ -1,0 +1,20 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.sort {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 3rem;
+	@include b.breakpoint(md) {
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 2rem;
+	}
+
+	&__input {
+		border-color: transparent;
+		font-weight: 600;
+	}
+}

@@ -7,6 +7,7 @@ import Filters from "../Filters/Filters";
 import ProductList from "../ProductList/ProductList";
 import ProductType from "@/types/ProductType";
 import styles from "./Products.module.scss";
+import Sort from "../Sort/Sort";
 
 type ProductsProps = {
 	products: ProductType[];
@@ -26,6 +27,7 @@ const Products = ({ products }: ProductsProps) => {
 			price: 1700,
 			discount: false,
 		},
+		sort: "price-lowest",
 	});
 
 	const updateFilters = (e: any) => {
@@ -47,9 +49,14 @@ const Products = ({ products }: ProductsProps) => {
 		dispatch({ type: "RESET_FILTERS" });
 	};
 
+	const updateSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		dispatch({ type: "UPDATE_SORT", payload: event.target.value });
+	};
+
 	useEffect(() => {
 		dispatch({ type: "FILTER_PRODUCTS" });
-	}, [state.filters]);
+		dispatch({ type: "SORT_PRODUCTS" });
+	}, [state.filters, state.sort]);
 
 	return (
 		<>
@@ -61,7 +68,7 @@ const Products = ({ products }: ProductsProps) => {
 					resetFilters={resetFilters}
 				/>
 				<div>
-					<div>Sort component</div>
+					<Sort state={{ ...state }} updateSort={updateSort} />
 					<ProductList products={state.filteredProducts} />
 				</div>
 			</div>
