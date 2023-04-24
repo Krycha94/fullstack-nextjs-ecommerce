@@ -20,11 +20,15 @@
 		// justify-content: space-between;
 	}
 
-	&__categoryBtn {
+	&__categoryBtn,
+	&__brandBtn,
+	&__sizeBtn {
 		background-color: lightsalmon;
 	}
 
-	&__categoryBtn.active {
+	&__categoryBtn.active,
+	&__brandBtn.active,
+	&__sizeBtn.active {
 		background-color: red;
 	}
 }

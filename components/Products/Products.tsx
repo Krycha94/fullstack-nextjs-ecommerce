@@ -17,7 +17,7 @@ const Products = ({ products }: ProductsProps) => {
 	const [state, dispatch] = useReducer(filterReducer, {
 		allProducts: products,
 		filteredProducts: products,
-		filters: { text: "", category: "all", brand: "all" },
+		filters: { text: "", category: "all", brand: "all", size: "all" },
 	});
 	// console.log(state.filters);
 
@@ -25,7 +25,7 @@ const Products = ({ products }: ProductsProps) => {
 		let name = e.currentTarget.name;
 		let value = e.currentTarget.value;
 
-		if (name === "category" || name === "brand") {
+		if (name === "category" || name === "brand" || name === "size") {
 			value = e.currentTarget.textContent as string;
 		}
 

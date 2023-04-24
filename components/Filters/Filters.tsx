@@ -1,4 +1,4 @@
-import { getUniqueValues } from "@/utils/helpers";
+import { getUniqueValues, sortSizes } from "@/utils/helpers";
 import ProductType from "@/types/ProductType";
 import FiltersType from "@/types/FiltersType";
 import styles from "./Filters.module.scss";
@@ -10,6 +10,7 @@ type FiltersProps = {
 			text: string;
 			category: string;
 			brand: string;
+			size: string;
 		};
 	};
 	updateFilters: (e: FiltersType) => void;
@@ -18,11 +19,13 @@ type FiltersProps = {
 const Filters = ({ state, updateFilters }: FiltersProps) => {
 	const {
 		allProducts,
-		filters: { text, category, brand },
+		filters: { text, category, brand, size },
 	} = state;
 
 	const categories = getUniqueValues(allProducts, "category");
 	const brands = getUniqueValues(allProducts, "brand");
+	const sizes = getUniqueValues(allProducts, "size");
+	const sortedSizes = sortSizes([...sizes]);
 
 	return (
 		<section className={styles.filters}>
@@ -72,7 +75,7 @@ const Filters = ({ state, updateFilters }: FiltersProps) => {
 									type="button"
 									name="brand"
 									onClick={updateFilters}
-									className={`${styles.filters__categoryBtn} ${
+									className={`${styles.filters__brandBtn} ${
 										b === brand && styles.active
 									}`}
 								>
@@ -88,6 +91,22 @@ const Filters = ({ state, updateFilters }: FiltersProps) => {
 							</div>
 						))}
 					</div>
+				</div>
+				<div className={styles.filters__formControl}>
+					<h5>SIZES</h5>
+					{sortedSizes?.map((s, index) => (
+						<button
+							key={index}
+							type="button"
+							name="size"
+							onClick={updateFilters}
+							className={`${styles.filters__sizeBtn} ${
+								size === s && styles.active
+							}`}
+						>
+							{s}
+						</button>
+					))}
 				</div>
 			</form>
 		</section>
