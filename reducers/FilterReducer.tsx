@@ -1,7 +1,7 @@
 type FilterStateType = {
 	allProducts: any;
 	filteredProducts: any;
-	filters: { text: string; category: string };
+	filters: { text: string; category: string; brand: string };
 };
 
 type UpdateFiltersAction = {
@@ -26,7 +26,7 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 
 	if (action.type === "FILTER_PRODUCTS") {
 		const { allProducts } = state;
-		const { text, category } = state.filters;
+		const { text, category, brand } = state.filters;
 		let tempProducts = [...allProducts];
 
 		if (text) {
@@ -37,6 +37,11 @@ const filterReducer = (state: FilterStateType, action: FilterActionType) => {
 		if (category !== "all") {
 			tempProducts = tempProducts.filter(
 				(product) => product.category === category
+			);
+		}
+		if (brand !== "all") {
+			tempProducts = tempProducts.filter(
+				(product) => product.brand === brand
 			);
 		}
 

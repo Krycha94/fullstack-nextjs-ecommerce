@@ -9,6 +9,7 @@ type FiltersProps = {
 		filters: {
 			text: string;
 			category: string;
+			brand: string;
 		};
 	};
 	updateFilters: (e: FiltersType) => void;
@@ -17,10 +18,11 @@ type FiltersProps = {
 const Filters = ({ state, updateFilters }: FiltersProps) => {
 	const {
 		allProducts,
-		filters: { text, category },
+		filters: { text, category, brand },
 	} = state;
 
 	const categories = getUniqueValues(allProducts, "category");
+	const brands = getUniqueValues(allProducts, "brand");
 
 	return (
 		<section className={styles.filters}>
@@ -36,20 +38,54 @@ const Filters = ({ state, updateFilters }: FiltersProps) => {
 					/>
 				</div>
 				<div className={styles.filters__formControl}>
-					<h5>Category</h5>
+					<h5>CATEGORIES</h5>
 					<div>
 						{categories.map((c, index) => (
-							<button
-								key={index}
-								type="button"
-								name="category"
-								onClick={updateFilters}
-								className={`${styles.filters__categoryBtn} ${
-									c === category && styles.active
-								}`}
-							>
-								{c}
-							</button>
+							<div key={index} className={styles.filters__category}>
+								<button
+									type="button"
+									name="category"
+									onClick={updateFilters}
+									className={`${styles.filters__categoryBtn} ${
+										c === category && styles.active
+									}`}
+								>
+									{c}
+								</button>
+								<p>
+									(
+									{c === "all"
+										? allProducts.length
+										: allProducts.filter((p) => p.category === c).length}
+									)
+								</p>
+							</div>
+						))}
+					</div>
+				</div>
+				<div className={styles.filters__formControl}>
+					<h5>BRANDING</h5>
+					<div>
+						{brands.map((b, index) => (
+							<div key={index} className={styles.filters__brand}>
+								<button
+									type="button"
+									name="brand"
+									onClick={updateFilters}
+									className={`${styles.filters__categoryBtn} ${
+										b === brand && styles.active
+									}`}
+								>
+									{b}
+								</button>
+								<p>
+									(
+									{b === "all"
+										? allProducts.length
+										: allProducts.filter((p) => p.brand === b).length}
+									)
+								</p>
+							</div>
 						))}
 					</div>
 				</div>

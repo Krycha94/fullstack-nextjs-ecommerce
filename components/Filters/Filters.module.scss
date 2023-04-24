@@ -14,6 +14,12 @@
 		transition: 0.2s all ease-in-out;
 	}
 
+	&__category,
+	&__brand {
+		display: flex;
+		// justify-content: space-between;
+	}
+
 	&__categoryBtn {
 		background-color: lightsalmon;
 	}
