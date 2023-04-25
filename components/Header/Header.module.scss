@@ -48,7 +48,9 @@
 
 	&__container {
 		display: flex;
-		gap: 2.5rem;
+		@include b.breakpoint(md) {
+			gap: 2rem;
+		}
 	}
 
 	&__hamburger {
@@ -56,6 +58,7 @@
 		font-weight: bold;
 		border: none;
 		background-color: transparent;
+		margin-left: 2rem;
 
 		@include b.breakpoint(md) {
 			display: none;

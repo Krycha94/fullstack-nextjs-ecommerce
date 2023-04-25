@@ -6,6 +6,9 @@
 	@include m.container;
 	margin: 2rem auto;
 	padding: 0 0.9rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	@include b.breakpoint(md) {
 		padding: 0 1.1rem;
@@ -14,5 +17,100 @@
 
 	@media screen and (min-width: 1340px) {
 		padding: 0;
+	}
+
+	&__form {
+		padding: 0.5rem;
+		width: 100%;
+		max-width: 600px;
+		@include b.breakpoint(md) {
+			padding: 2rem;
+		}
+	}
+
+	&__title {
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+	}
+
+	&__formControl {
+		margin-bottom: 1rem;
+
+		input {
+			display: block;
+			width: 100%;
+			padding: 0.4rem;
+			border: 1px solid v.$color-font-lighter;
+			border-radius: 0.4rem;
+		}
+	}
+
+	&__submitBtn,
+	&__googleBtn,
+	&__githubBtn {
+		margin-top: 0.5rem;
+		width: 100%;
+		padding: 0.4rem;
+		border-radius: 0.4rem;
+		cursor: pointer;
+		transition: v.$transition;
+	}
+
+	&__submitBtn {
+		background-color: v.$color-primary;
+		color: v.$color-bg;
+		border: 1px solid v.$color-primary;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: v.$color-bg;
+			color: v.$color-primary;
+		}
+	}
+
+	&__googleBtn {
+		background-color: #4f86ec;
+		color: v.$color-bg;
+		border: 1px solid #4f86ec;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: v.$color-bg;
+			color: #4f86ec;
+		}
+	}
+
+	&__githubBtn {
+		background-color: #444;
+		color: v.$color-bg;
+		border: 1px solid #444;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: v.$color-bg;
+			color: #444;
+		}
+	}
+
+	&__text {
+		text-align: center;
+		margin: 1rem 0 0.5rem;
+	}
+
+	&__info {
+		text-align: center;
+		margin-top: 2rem;
+	}
+
+	&__infoBtn {
+		margin-left: 0.3rem;
+		background-color: transparent;
+		border: none;
+		color: v.$color-primary;
+		font-weight: 600;
+		cursor: pointer;
 	}
 }
