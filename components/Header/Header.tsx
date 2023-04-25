@@ -8,6 +8,7 @@ import MobileNav from "../MobileNav/MobileNav";
 import { navLinks } from "@/utils/constants";
 import { FaBars } from "react-icons/fa";
 import styles from "./Header.module.scss";
+import UserPanel from "../UserPanel/UserPanel";
 
 const Header = () => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
@@ -36,7 +37,7 @@ const Header = () => {
 					<button className={styles.header__hamburger} onClick={handleOpen}>
 						<FaBars />
 					</button>
-					<Link href="login" className={styles.header__login}>Login</Link>
+					<UserPanel />
 				</div>
 				<MobileNav isNavOpen={isNavOpen} onClose={handleClose} />
 			</div>

@@ -1,0 +1,18 @@
+@use "@/styles/mixins.scss" as m;
+@use "@/styles/breakpoints.scss" as b;
+@use "@/styles/variables" as v;
+
+.auth {
+	@include m.container;
+	margin: 2rem auto;
+	padding: 0 0.9rem;
+
+	@include b.breakpoint(md) {
+		padding: 0 1.1rem;
+		margin: 5rem auto;
+	}
+
+	@media screen and (min-width: 1340px) {
+		padding: 0;
+	}
+}

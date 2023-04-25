@@ -25,7 +25,7 @@ const MobileNav = ({ isNavOpen, onClose }: MobileNavProps) => {
 							{link.text}
 						</Link>
 					))}
-					<Link href="login">Login</Link>
+					<Link href="auth">Login</Link>
 				</nav>
 			</aside>
 		</>

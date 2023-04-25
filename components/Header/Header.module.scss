@@ -61,14 +61,4 @@
 			display: none;
 		}
 	}
-
-	&__login {
-		display: none;
-		text-transform: uppercase;
-		padding: 0.5rem;
-
-		@include b.breakpoint(md) {
-			display: flex;
-		}
-	}
 }
