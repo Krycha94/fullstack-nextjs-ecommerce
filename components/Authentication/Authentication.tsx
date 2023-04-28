@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import styles from "./Authentication.module.scss";
+import { useAuthContext } from "@/context/AuthContext";
 
 const Authentication = () => {
 	const [isRegister, setIsRegister] = useState(false);
+	const { user } = useAuthContext();
+	console.log(user);
 
 	return (
 		<section className={styles.auth}>
