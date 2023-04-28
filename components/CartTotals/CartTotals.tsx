@@ -1,8 +1,11 @@
 import { useCartContext } from "@/context/CartContext";
+import { useAuthContext } from "@/context/AuthContext";
 import styles from "./CartTotals.module.scss";
+import Link from "next/link";
 
 const CartTotals = () => {
 	const { totalAmount, shippingFee } = useCartContext();
+	const { user } = useAuthContext();
 
 	return (
 		<div className={styles.totals}>
@@ -33,9 +36,15 @@ const CartTotals = () => {
 				<h4>
 					Total: <span>${(totalAmount + shippingFee).toFixed(2)}</span>
 				</h4>
-				<button className={styles.totals__loginBtn} type="button">
-					LOGIN
-				</button>
+				{user ? (
+					<Link href="checkout" className={styles.totals__link}>
+						Checkout
+					</Link>
+				) : (
+					<Link href="auth" className={styles.totals__link}>
+						Login
+					</Link>
+				)}
 			</div>
 		</div>
 	);

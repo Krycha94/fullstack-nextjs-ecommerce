@@ -60,9 +60,21 @@
 		}
 	}
 
-	&__loginBtn {
+	&__link {
+		display: inline-block;
 		width: 100%;
+		border: 1px solid v.$color-primary;
+		background-color: v.$color-primary;
+		color: v.$color-bg;
 		padding: 0.4rem 0.8rem;
+		text-align: center;
+		text-transform: uppercase;
 		cursor: pointer;
+		transition: v.$transition;
+
+		&:hover {
+			background-color: v.$color-bg;
+			color: v.$color-primary;
+		}
 	}
 }

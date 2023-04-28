@@ -3,7 +3,7 @@ import { useAuthContext } from "@/context/AuthContext";
 import styles from "./UserPanel.module.scss";
 
 const UserPanel = () => {
-	const { user } = useAuthContext();
+	const { user, logout } = useAuthContext();
 
 	return (
 		<div className={styles.user}>
@@ -15,7 +15,9 @@ const UserPanel = () => {
 				<>
 					<p>{user?.displayName || user?.email}</p>
 					<img src={user?.photoURL || ""} alt="profile pic" />
-					<button>Logout</button>
+					<button type="button" onClick={logout}>
+						Logout
+					</button>
 				</>
 			)}
 		</div>

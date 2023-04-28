@@ -12,11 +12,15 @@ import { auth } from "@/firebase/config";
 import {
 	createUserWithEmailAndPassword,
 	onAuthStateChanged,
+	signOut,
+	updateProfile,
 } from "firebase/auth";
 
 type AuthContextType = {
 	user: FirebaseUser | null;
-	SignUp: any;
+	register: (email: string, password: string) => void;
+	logout: () => void;
+	updateUser: (username: string) => void;
 };
 
 const AuthContext = createContext<AuthContextType>(null!);
@@ -37,7 +41,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		});
 	}, []);
 
-	const SignUp = async (email: string, password: string) => {
+	const register = async (email: string, password: string) => {
 		try {
 			const userCredential = await createUserWithEmailAndPassword(
 				auth,
@@ -54,8 +58,28 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		}
 	};
 
+	const logout = async () => {
+		try {
+			await signOut(auth);
+			console.log("logged out!");
+		} catch (error) {
+			console.log("could not logout!");
+		}
+	};
+
+	const updateUser = async (username: string) => {
+		try {
+			await updateProfile(auth.currentUser as FirebaseUser, {
+				displayName: username,
+			});
+			console.log("profile updated!");
+		} catch (error) {
+			console.log("could not update profile!");
+		}
+	};
+
 	return (
-		<AuthContext.Provider value={{ user, SignUp }}>
+		<AuthContext.Provider value={{ user, register, logout, updateUser }}>
 			{children}
 		</AuthContext.Provider>
 	);
