@@ -13,7 +13,7 @@ const initialUser = {
 const Authentication = () => {
 	const [enteredUser, setEnteredUser] = useState(initialUser);
 	const [isRegister, setIsRegister] = useState(false);
-	const { register, updateUser } = useAuthContext();
+	const { register, login, updateUser } = useAuthContext();
 	// console.log(enteredUser);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -22,8 +22,21 @@ const Authentication = () => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		await register(enteredUser.email, enteredUser.password);
-		await updateUser(enteredUser.username);
+		if (
+			(isRegister && !enteredUser.username) ||
+			!enteredUser.email ||
+			!enteredUser.password
+		) {
+			console.log("puste");
+			return;
+		}
+
+		if (isRegister) {
+			await register(enteredUser.email, enteredUser.password);
+			await updateUser(enteredUser.username);
+		} else {
+			login(enteredUser.email, enteredUser.password);
+		}
 	};
 
 	const toggleRegister = () => {

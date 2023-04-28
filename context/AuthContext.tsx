@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import {
 	createContext,
 	ReactNode,
@@ -10,8 +11,9 @@ import {
 import { User as FirebaseUser } from "firebase/auth";
 import { auth } from "@/firebase/config";
 import {
-	createUserWithEmailAndPassword,
 	onAuthStateChanged,
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
 	signOut,
 	updateProfile,
 } from "firebase/auth";
@@ -19,6 +21,7 @@ import {
 type AuthContextType = {
 	user: FirebaseUser | null;
 	register: (email: string, password: string) => void;
+	login: (email: string, password: string) => void;
 	logout: () => void;
 	updateUser: (username: string) => void;
 };
@@ -28,6 +31,7 @@ const AuthContext = createContext<AuthContextType>(null!);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const [user, setUser] = useState<FirebaseUser | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
+	const router = useRouter();
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
@@ -48,38 +52,47 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 				email,
 				password
 			);
-			console.log(
-				`Account created! Welcome ${userCredential.user.displayName}, ${userCredential.user.email}`
-			);
+			router.push("/cart");
+			console.log(`Account created! Welcome ${userCredential.user.email}`);
 		} catch (e) {
 			const errorCode = (e as any).code;
-			const errorMessage = (e as Error).message;
-			console.log(`Register failed ${errorCode}, ${errorMessage}`);
+			console.log(`Register failed ${errorCode}`);
+		}
+	};
+
+	const login = async (email: string, password: string) => {
+		try {
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+			router.push("/cart");
+			console.log(`Welcome ${userCredential.user.email}`);
+		} catch (e) {
+			const errorCode = (e as any).code;
+			console.log(`Login failed ${errorCode}`);
 		}
 	};
 
 	const logout = async () => {
 		try {
 			await signOut(auth);
-			console.log("logged out!");
+			router.push("/");
+			console.log("Logged out!");
 		} catch (error) {
-			console.log("could not logout!");
+			console.log("Could not logout!");
 		}
 	};
 
 	const updateUser = async (username: string) => {
-		try {
-			await updateProfile(auth.currentUser as FirebaseUser, {
-				displayName: username,
-			});
-			console.log("profile updated!");
-		} catch (error) {
-			console.log("could not update profile!");
-		}
+		await updateProfile(auth.currentUser as FirebaseUser, {
+			displayName: username,
+		});
 	};
 
 	return (
-		<AuthContext.Provider value={{ user, register, logout, updateUser }}>
+		<AuthContext.Provider value={{ user, register, login, logout, updateUser }}>
 			{children}
 		</AuthContext.Provider>
 	);
