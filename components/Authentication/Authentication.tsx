@@ -1,34 +1,74 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./Authentication.module.scss";
 import { useAuthContext } from "@/context/AuthContext";
+import styles from "./Authentication.module.scss";
+
+const initialUser = {
+	username: "",
+	email: "",
+	password: "",
+};
 
 const Authentication = () => {
+	const [enteredUser, setEnteredUser] = useState(initialUser);
 	const [isRegister, setIsRegister] = useState(false);
-	const { user } = useAuthContext();
+	const { user, SignUp } = useAuthContext();
 	console.log(user);
+
+	// console.log(enteredUser);
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+		setEnteredUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		await SignUp(enteredUser.email, enteredUser.password);
+	};
+
+	const toggleRegister = () => {
+		setIsRegister((prev) => !prev);
+		setEnteredUser(initialUser);
+	};
 
 	return (
 		<section className={styles.auth}>
-			<form onSubmit={(e) => e.preventDefault()} className={styles.auth__form}>
+			<form onSubmit={handleSubmit} className={styles.auth__form}>
 				<h2 className={styles.auth__title}>
 					{isRegister ? "Register" : "Login"}
 				</h2>
 				{isRegister && (
 					<div className={styles.auth__formControl}>
 						<label htmlFor="username">Username*</label>
-						<input type="text" id="username" name="username" />
+						<input
+							type="text"
+							id="username"
+							name="username"
+							value={enteredUser.username}
+							onChange={handleChange}
+						/>
 					</div>
 				)}
 
 				<div className={styles.auth__formControl}>
 					<label htmlFor="email">Email*</label>
-					<input type="email" id="email" name="email" />
+					<input
+						type="email"
+						id="email"
+						name="email"
+						value={enteredUser.email}
+						onChange={handleChange}
+					/>
 				</div>
 				<div className={styles.auth__formControl}>
 					<label htmlFor="password">Password*</label>
-					<input type="password" id="password" name="password" />
+					<input
+						type="password"
+						id="password"
+						name="password"
+						value={enteredUser.password}
+						onChange={handleChange}
+					/>
 				</div>
 				<button type="submit" className={styles.auth__submitBtn}>
 					{isRegister ? "Register" : "Login"}
@@ -49,7 +89,7 @@ const Authentication = () => {
 						Already have an account?
 						<button
 							type="button"
-							onClick={() => setIsRegister((prev) => !prev)}
+							onClick={toggleRegister}
 							className={styles.auth__infoBtn}
 						>
 							Login
@@ -60,7 +100,7 @@ const Authentication = () => {
 						Don't have an account?
 						<button
 							type="button"
-							onClick={() => setIsRegister((prev) => !prev)}
+							onClick={toggleRegister}
 							className={styles.auth__infoBtn}
 						>
 							Register
