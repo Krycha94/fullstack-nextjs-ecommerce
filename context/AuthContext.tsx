@@ -8,14 +8,15 @@ import {
 	useState,
 	useEffect,
 } from "react";
-import { User as FirebaseUser } from "firebase/auth";
-import { auth } from "@/firebase/config";
+import { auth, googleProvider, githubProvider } from "@/firebase/config";
 import {
+	User as FirebaseUser,
 	onAuthStateChanged,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signOut,
 	updateProfile,
+	signInWithPopup,
 } from "firebase/auth";
 
 type AuthContextType = {
@@ -24,6 +25,8 @@ type AuthContextType = {
 	login: (email: string, password: string) => void;
 	logout: () => void;
 	updateUser: (username: string) => void;
+	loginWithGoogle: () => void;
+	loginWithGithub: () => void;
 };
 
 const AuthContext = createContext<AuthContextType>(null!);
@@ -75,6 +78,28 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		}
 	};
 
+	const loginWithGoogle = async () => {
+		try {
+			const userCredential = await signInWithPopup(auth, googleProvider);
+			router.push("/cart");
+			console.log(`Welcome ${userCredential.user.email}`);
+		} catch (e) {
+			const errorCode = (e as any).code;
+			console.log(`Login failed ${errorCode}`);
+		}
+	};
+
+	const loginWithGithub = async () => {
+		try {
+			const userCredential = await signInWithPopup(auth, githubProvider);
+			router.push("/cart");
+			console.log(`Welcome ${userCredential}`);
+		} catch (e) {
+			const errorCode = (e as any).code;
+			console.log(`Login failed ${errorCode}`);
+		}
+	};
+
 	const logout = async () => {
 		try {
 			await signOut(auth);
@@ -92,7 +117,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	return (
-		<AuthContext.Provider value={{ user, register, login, logout, updateUser }}>
+		<AuthContext.Provider
+			value={{
+				user,
+				register,
+				login,
+				logout,
+				updateUser,
+				loginWithGoogle,
+				loginWithGithub,
+			}}
+		>
 			{children}
 		</AuthContext.Provider>
 	);

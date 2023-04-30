@@ -13,8 +13,8 @@ const initialUser = {
 const Authentication = () => {
 	const [enteredUser, setEnteredUser] = useState(initialUser);
 	const [isRegister, setIsRegister] = useState(false);
-	const { register, login, updateUser } = useAuthContext();
-	// console.log(enteredUser);
+	const { register, login, updateUser, loginWithGoogle, loginWithGithub } =
+		useAuthContext();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
 		setEnteredUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -88,12 +88,20 @@ const Authentication = () => {
 				</button>
 				<p className={styles.auth__text}>OR</p>
 				{!isRegister && (
-					<button type="button" className={styles.auth__googleBtn}>
+					<button
+						type="button"
+						onClick={loginWithGoogle}
+						className={styles.auth__googleBtn}
+					>
 						Login with Google
 					</button>
 				)}
 				{!isRegister && (
-					<button type="button" className={styles.auth__githubBtn}>
+					<button
+						type="button"
+						onClick={loginWithGithub}
+						className={styles.auth__githubBtn}
+					>
 						Login with Github
 					</button>
 				)}
