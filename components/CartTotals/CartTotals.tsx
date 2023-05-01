@@ -1,11 +1,29 @@
+import Link from "next/link";
+import getStripe from "@/lib/getStripe";
 import { useCartContext } from "@/context/CartContext";
 import { useAuthContext } from "@/context/AuthContext";
 import styles from "./CartTotals.module.scss";
-import Link from "next/link";
 
 const CartTotals = () => {
-	const { totalAmount, shippingFee } = useCartContext();
+	const { totalAmount, shippingFee, cart } = useCartContext();
 	const { user } = useAuthContext();
+
+	const handleCheckout = async () => {
+		const stripe = await getStripe();
+		const response = await fetch("/api/stripe", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(cart),
+		});
+
+		if ((response as any).statusCode === 500) return;
+
+		const data = await response.json();
+
+		stripe!.redirectToCheckout({ sessionId: data.id });
+	};
 
 	return (
 		<div className={styles.totals}>
@@ -37,9 +55,9 @@ const CartTotals = () => {
 					Total: <span>${(totalAmount + shippingFee).toFixed(2)}</span>
 				</h4>
 				{user ? (
-					<Link href="checkout" className={styles.totals__link}>
+					<button onClick={handleCheckout} className={styles.totals__link}>
 						Checkout
-					</Link>
+					</button>
 				) : (
 					<Link href="auth" className={styles.totals__link}>
 						Login
