@@ -56,7 +56,7 @@ const CartTotals = () => {
 				</h4>
 				{user ? (
 					<button onClick={handleCheckout} className={styles.totals__link}>
-						Checkout
+						Pay With Stripe
 					</button>
 				) : (
 					<Link href="auth" className={styles.totals__link}>

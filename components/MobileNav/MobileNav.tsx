@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useAuthContext } from "@/context/AuthContext";
 import { navLinks } from "@/utils/constants";
 import { FaTimes } from "react-icons/fa";
 import styles from "./MobileNav.module.scss";
@@ -9,6 +10,8 @@ type MobileNavProps = {
 };
 
 const MobileNav = ({ isNavOpen, onClose }: MobileNavProps) => {
+	const { user, logout } = useAuthContext();
+
 	return (
 		<>
 			<div
@@ -21,11 +24,36 @@ const MobileNav = ({ isNavOpen, onClose }: MobileNavProps) => {
 				</button>
 				<nav className={styles.sidebar__nav}>
 					{navLinks.map((link) => (
-						<Link href={link.url} key={link.id}>
+						<Link href={link.url} key={link.id} onClick={onClose}>
 							{link.text}
 						</Link>
 					))}
-					<Link href="auth">Login</Link>
+					{!user ? (
+						<Link href="auth" onClick={onClose}>
+							Login
+						</Link>
+					) : (
+						<div className={styles.sidebar__user}>
+							<img
+								src={user?.photoURL || "/default.png"}
+								alt="profile pic"
+								className={styles.sidebar__userImg}
+							/>
+							<p className={styles.sidebar__userName}>
+								{user?.displayName || user?.email}
+							</p>
+							<button
+								type="button"
+								onClick={() => {
+									logout();
+									onClose();
+								}}
+								className={styles.sidebar__logoutBtn}
+							>
+								Logout
+							</button>
+						</div>
+					)}
 				</nav>
 			</aside>
 		</>

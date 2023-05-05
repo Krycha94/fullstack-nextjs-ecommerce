@@ -18,7 +18,7 @@ const UserPanel = () => {
 				<div className={styles.user__container}>
 					<div className={styles.user__panel}>
 						<img
-							src={user?.photoURL || ""}
+							src={user?.photoURL || "/default.png"}
 							alt="profile pic"
 							className={styles.user__img}
 						/>

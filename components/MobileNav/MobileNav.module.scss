@@ -60,4 +60,24 @@
 			}
 		}
 	}
+
+	&__user {
+		padding: 1rem 0 1rem 0.6rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	&__userImg {
+		width: 40px;
+		height: 40px;
+		object-fit: contain;
+		border-radius: 50%;
+	}
+
+	&__logoutBtn {
+		background-color: transparent;
+		border: transparent;
+		font-weight: bold;
+	}
 }
