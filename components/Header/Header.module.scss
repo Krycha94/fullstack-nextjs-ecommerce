@@ -3,10 +3,15 @@
 @use "@/styles/variables" as v;
 
 .header {
+	background-color: v.$color-bg;
+	border-bottom: solid 1px v.$color-gray-light;
 	padding: 0.9rem;
+	position: sticky;
+	top: 0;
+	z-index: 100;
 
 	@include b.breakpoint(md) {
-		padding: 1.2rem;
+		padding: 0.9rem 1.2rem;
 	}
 
 	&__center {
@@ -46,6 +51,16 @@
 		}
 	}
 
+	&__logoImg {
+		width: 70px;
+		height: 35px;
+
+		@include b.breakpoint(md) {
+			width: 80px;
+			height: 40px;
+		}
+	}
+
 	&__container {
 		display: flex;
 		@include b.breakpoint(md) {
@@ -54,11 +69,10 @@
 	}
 
 	&__hamburger {
-		font-size: 1.6rem;
-		font-weight: bold;
+		font-size: 1.2rem;
 		border: none;
 		background-color: transparent;
-		margin-left: 2rem;
+		margin-left: 1.6rem;
 
 		@include b.breakpoint(md) {
 			display: none;

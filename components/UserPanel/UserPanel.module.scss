@@ -7,9 +7,51 @@
 		display: none;
 		text-transform: uppercase;
 		padding: 0.5rem;
+		font-size: 1.1rem;
 
 		@include b.breakpoint(md) {
 			display: flex;
 		}
+	}
+
+	&__container {
+		position: relative;
+	}
+
+	&__panel {
+		display: none;
+
+		@include b.breakpoint(md) {
+			display: flex;
+			align-items: center;
+			gap: 0.4rem;
+		}
+	}
+
+	&__img {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		object-fit: contain;
+	}
+
+	&__menuBtn {
+		background-color: transparent;
+		border: transparent;
+		cursor: pointer;
+		svg {
+			font-size: 1.2rem;
+		}
+	}
+
+	&__logoutBtn {
+		position: absolute;
+		top: 22px;
+		right: 0;
+		padding: 0.2rem;
+		font-weight: bold;
+		border: transparent;
+		background-color: transparent;
+		cursor: pointer;
 	}
 }

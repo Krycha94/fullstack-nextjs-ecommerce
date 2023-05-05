@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useCartContext } from "@/context/CartContext";
-import { RiShoppingBasketLine } from "react-icons/ri";
 import styles from "./CartIcon.module.scss";
+import { BiShoppingBag } from "react-icons/bi";
 
 const CartIcon = () => {
 	const { totalAmount, totalItems } = useCartContext();
@@ -10,7 +10,7 @@ const CartIcon = () => {
 		<div className={styles.cartIcon}>
 			<span className={styles.cartIcon__price}>${totalAmount.toFixed(2)}</span>
 			<Link href="/cart" className={styles.cartIcon__link}>
-				<RiShoppingBasketLine />
+				<BiShoppingBag />
 				<span className={styles.cartIcon__badge}>{totalItems}</span>
 			</Link>
 		</div>

@@ -31,6 +31,7 @@ const Header = () => {
 					width={80}
 					height={40}
 					alt="krycha store"
+					className={styles.header__logoImg}
 				/>
 				<div className={styles.header__container}>
 					<CartIcon />
