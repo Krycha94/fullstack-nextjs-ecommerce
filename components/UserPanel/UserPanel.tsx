@@ -23,7 +23,7 @@ const UserPanel = () => {
 							className={styles.user__img}
 						/>
 						<p className={styles.user__name}>
-							{user?.displayName || user?.email}
+							{user?.displayName?.split(" ")[0] || user?.email}
 						</p>
 						<button
 							onClick={() => setIsOpen((prev) => !prev)}

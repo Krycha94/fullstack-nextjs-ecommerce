@@ -18,6 +18,7 @@ import {
 	updateProfile,
 	signInWithPopup,
 } from "firebase/auth";
+import toast from "react-hot-toast";
 
 type AuthContextType = {
 	user: FirebaseUser | null;
@@ -56,10 +57,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 				password
 			);
 			router.push("/cart");
-			console.log(`Account created! Welcome ${userCredential.user.email}`);
+			toast.success(`Account created! Welcome ${userCredential.user.email}`);
 		} catch (e) {
 			const errorCode = (e as any).code;
-			console.log(`Register failed ${errorCode}`);
+			toast.error(`Register failed ${errorCode}`);
 		}
 	};
 
@@ -71,10 +72,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 				password
 			);
 			router.push("/cart");
-			console.log(`Welcome ${userCredential.user.email}`);
+			toast.success(`Welcome ${userCredential.user.email}`);
 		} catch (e) {
 			const errorCode = (e as any).code;
-			console.log(`Login failed ${errorCode}`);
+			toast.error(`Login failed ${errorCode}`);
 		}
 	};
 
@@ -82,10 +83,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		try {
 			const userCredential = await signInWithPopup(auth, googleProvider);
 			router.push("/cart");
-			console.log(`Welcome ${userCredential.user.email}`);
+			toast.success(`Welcome ${userCredential.user.email}`);
 		} catch (e) {
 			const errorCode = (e as any).code;
-			console.log(`Login failed ${errorCode}`);
+			toast.error(`Login failed ${errorCode}`);
 		}
 	};
 
@@ -93,10 +94,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		try {
 			const userCredential = await signInWithPopup(auth, githubProvider);
 			router.push("/cart");
-			console.log(`Welcome ${userCredential}`);
+			toast.success(`Welcome ${userCredential.user.email}`);
 		} catch (e) {
 			const errorCode = (e as any).code;
-			console.log(`Login failed ${errorCode}`);
+			toast.error(`Login failed ${errorCode}`);
 		}
 	};
 
@@ -104,9 +105,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		try {
 			await signOut(auth);
 			router.push("/");
-			console.log("Logged out!");
+			toast.success("Logged out!");
 		} catch (error) {
-			console.log("Could not logout!");
+			toast.error("Could not logout!");
 		}
 	};
 

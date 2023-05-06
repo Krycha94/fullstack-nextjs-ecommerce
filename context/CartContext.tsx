@@ -8,6 +8,7 @@ import {
 	ReactNode,
 } from "react";
 import cartReducer from "@/reducers/CartReducer";
+import toast from "react-hot-toast";
 import ProductType from "@/types/ProductType";
 import CartItemType from "@/types/CartItemType";
 
@@ -53,6 +54,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 		amount: number,
 		product: ProductType
 	) => {
+		toast.success(`${amount} x ${product.name} added`);
 		dispatch({
 			type: "ADD_TO_CART",
 			payload: { id, size, amount, product },
@@ -60,6 +62,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	const removeFromCart = (id: string) => {
+		toast.error("Product removed from cart");
 		dispatch({ type: "REMOVE_FROM_CART", payload: id });
 	};
 
