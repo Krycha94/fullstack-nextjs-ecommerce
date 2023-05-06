@@ -37,8 +37,8 @@ export default async function handler(
 						quantity: item.amount,
 					};
 				}),
-				success_url: `${req.headers.origin}/success`,
-				cancel_url: `${req.headers.origin}/canceled`,
+				success_url: `${req.headers.origin}`,
+				cancel_url: `${req.headers.origin}`,
 			};
 
 			// Create Checkout Sessions from body params.

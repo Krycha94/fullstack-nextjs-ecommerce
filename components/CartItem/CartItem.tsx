@@ -19,7 +19,7 @@ const CartItem = ({ id, image, name, size, price, amount }: CartItemType) => {
 	return (
 		<article className={styles.product}>
 			<div className={styles.product__title}>
-				<Image src={image + ".jpg"} alt={name} width={75} height={75} />
+				<Image src={image + ".jpg"} alt={name} width={120} height={120} />
 				<div className={styles.product__desc}>
 					<h5>{name}</h5>
 					<p>Size: {size}</p>
