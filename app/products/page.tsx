@@ -2,6 +2,7 @@ import { db } from "@/firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 import Products from "@/components/Products/Products";
 import ProductType from "@/types/ProductType";
+import PageWrapper from "@/components/PageWrapper/PageWrapper";
 
 export const metadata = {
 	title: "Krycha Store - Products",
@@ -16,6 +17,10 @@ const ProductsPage = async () => {
 		id: doc.id,
 	})) as ProductType[];
 
-	return <Products products={products} />;
+	return (
+		<PageWrapper>
+			<Products products={products} />
+		</PageWrapper>
+	);
 };
 export default ProductsPage;

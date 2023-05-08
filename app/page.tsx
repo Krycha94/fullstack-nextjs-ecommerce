@@ -1,5 +1,6 @@
 import { db } from "@/firebase/config";
 import { getDocs, collection, query, where } from "firebase/firestore";
+import PageWrapper from "@/components/PageWrapper/PageWrapper";
 import Hero from "@/components/Hero/Hero";
 import Collections from "@/components/Collections/Collections";
 import PopularProducts from "@/components/PopularProducts/PopularProducts";
@@ -17,12 +18,12 @@ const Home = async () => {
 	})) as ProductType[];
 
 	return (
-		<>
+		<PageWrapper>
 			<Hero />
 			<Collections />
 			<PopularProducts products={products} />
 			<Contact />
-		</>
+		</PageWrapper>
 	);
 };
 

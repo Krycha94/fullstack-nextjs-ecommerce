@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BiHeart } from "react-icons/bi";
@@ -5,16 +8,9 @@ import ProductType from "@/types/ProductType";
 import styles from "./Product.module.scss";
 import Stars from "../Stars/Stars";
 
-const Product = ({
-	id,
-	images,
-	name,
-	price,
-	discount,
-	stars,
-}: ProductType) => {
+const Product = ({ id, images, name, price, discount, stars }: ProductType) => {
 	return (
-		<article className={styles.product}>
+		<motion.article layout className={styles.product}>
 			<div className={styles.product__container}>
 				<Image
 					src={images[2].url + ".jpg"}
@@ -51,7 +47,7 @@ const Product = ({
 					)}
 				</p>
 			</footer>
-		</article>
+		</motion.article>
 	);
 };
 export default Product;

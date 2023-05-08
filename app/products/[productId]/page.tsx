@@ -1,9 +1,9 @@
 import { db } from "@/firebase/config";
 import { doc, getDoc, getDocs, collection } from "firebase/firestore";
-import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProductDetails from "@/components/ProductDetails/ProductDetails";
 import ProductType from "@/types/ProductType";
+import PageWrapper from "@/components/PageWrapper/PageWrapper";
 
 type Params = {
 	params: {
@@ -40,10 +40,10 @@ const SingleProductPage = async ({ params: { productId } }: Params) => {
 		);
 
 	return (
-		<>
+		<PageWrapper>
 			<Breadcrumbs title={product?.name} product />
 			<ProductDetails product={product} />
-		</>
+		</PageWrapper>
 	);
 };
 
