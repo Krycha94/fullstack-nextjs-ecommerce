@@ -1,0 +1,23 @@
+.error {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+	gap: 1rem;
+	height: 100vh;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+
+	button {
+		padding: 0.4rem;
+		border: 2px solid #000;
+		background-color: #fff;
+		cursor: pointer;
+	}
+
+	a {
+		padding: 0.4rem;
+		border: 2px solid #000;
+	}
+}

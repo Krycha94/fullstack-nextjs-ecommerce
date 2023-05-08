@@ -1,5 +1,6 @@
 import { db } from "@/firebase/config";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection } from "firebase/firestore";
+import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import ProductDetails from "@/components/ProductDetails/ProductDetails";
 import ProductType from "@/types/ProductType";
@@ -14,9 +15,9 @@ export const generateMetadata = async ({ params: { productId } }: Params) => {
 	const productDocRef = doc(db, "products", productId);
 	const product = await getDoc(productDocRef).then((doc) => doc.data());
 
-	if (!product) {
+	if (!product?.name) {
 		return {
-			title: "product not found",
+			title: "Product not found",
 		};
 	}
 
@@ -33,6 +34,11 @@ const SingleProductPage = async ({ params: { productId } }: Params) => {
 		id: doc.id,
 	}))) as ProductType;
 
+	if (!product?.name)
+		throw new Error(
+			"Something went wrong, please make sure url is correct or there is problem with api, please try again."
+		);
+
 	return (
 		<>
 			<Breadcrumbs title={product?.name} product />
@@ -40,4 +46,16 @@ const SingleProductPage = async ({ params: { productId } }: Params) => {
 		</>
 	);
 };
+
+export const generateStaticParams = async () => {
+	const productsCollectionRef = collection(db, "products");
+	const data = await getDocs(productsCollectionRef);
+	const products = data.docs.map((doc) => ({
+		...doc.data(),
+		id: doc.id,
+	})) as ProductType[];
+
+	return products.map((product) => ({ productId: `${product.id}` }));
+};
+
 export default SingleProductPage;
