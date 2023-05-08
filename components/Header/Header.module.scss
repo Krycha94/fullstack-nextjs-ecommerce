@@ -14,6 +14,16 @@
 		padding: 0.6rem 1.2rem;
 	}
 
+	&.loading {
+		opacity: 0;
+		transition: all 0.1s ease-in;
+	}
+
+	&.loaded {
+		opacity: 1;
+		transition: all 0.1s ease-in;
+	}
+
 	&__center {
 		@include m.container;
 		display: flex;

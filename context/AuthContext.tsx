@@ -22,6 +22,7 @@ import toast from "react-hot-toast";
 
 type AuthContextType = {
 	user: FirebaseUser | null;
+	isLoading: boolean;
 	register: (email: string, password: string) => void;
 	login: (email: string, password: string) => void;
 	logout: () => void;
@@ -121,6 +122,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		<AuthContext.Provider
 			value={{
 				user,
+				isLoading,
 				register,
 				login,
 				logout,

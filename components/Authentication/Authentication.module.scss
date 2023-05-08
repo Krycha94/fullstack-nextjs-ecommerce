@@ -9,6 +9,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: 70vh;
 
 	@include b.breakpoint(md) {
 		padding: 0 1.1rem;

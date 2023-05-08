@@ -9,15 +9,21 @@ import { navLinks } from "@/utils/constants";
 import { FaBars } from "react-icons/fa";
 import styles from "./Header.module.scss";
 import UserPanel from "../UserPanel/UserPanel";
+import { useAuthContext } from "@/context/AuthContext";
 
 const Header = () => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
+	const { user, isLoading } = useAuthContext();
 
 	const handleOpen = () => setIsNavOpen(true);
 	const handleClose = () => setIsNavOpen(false);
 
 	return (
-		<header className={styles.header}>
+		<header
+			className={`${styles.header} ${
+				!user && isLoading ? styles.loading : styles.loaded
+			}`}
+		>
 			<div className={styles.header__center}>
 				<nav className={styles.header__nav}>
 					{navLinks.map((link) => (

@@ -8,7 +8,7 @@
 	padding: 0 0.9rem;
 	display: grid;
 	gap: 3rem;
-	min-height: 60vh;
+	min-height: 70vh;
 
 	@include b.breakpoint(md) {
 		padding: 0 1.1rem;

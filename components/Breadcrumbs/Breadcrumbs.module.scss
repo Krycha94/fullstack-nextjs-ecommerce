@@ -4,10 +4,10 @@
 
 .breadcrumbs {
 	background-color: v.$color-gray-light;
-	padding: 2rem 0.9rem;
+	padding: 1rem 0.9rem;
 	text-transform: capitalize;
 	@include b.breakpoint(md) {
-		padding: 2.8rem 1.2rem;
+		padding: 2rem 1.2rem;
 	}
 
 	&__container {
