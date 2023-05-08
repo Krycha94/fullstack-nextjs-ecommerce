@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useAuthContext } from "@/context/AuthContext";
 import { navLinks } from "@/utils/constants";
 import { FaTimes } from "react-icons/fa";
@@ -11,6 +12,7 @@ type MobileNavProps = {
 
 const MobileNav = ({ isNavOpen, onClose }: MobileNavProps) => {
 	const { user, logout } = useAuthContext();
+	const path = usePathname();
 
 	return (
 		<>
@@ -24,7 +26,12 @@ const MobileNav = ({ isNavOpen, onClose }: MobileNavProps) => {
 				</button>
 				<nav className={styles.sidebar__nav}>
 					{navLinks.map((link) => (
-						<Link href={link.url} key={link.id} onClick={onClose}>
+						<Link
+							href={link.url}
+							key={link.id}
+							onClick={onClose}
+							className={`${link.url === path && styles.active}`}
+						>
 							{link.text}
 						</Link>
 					))}

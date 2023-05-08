@@ -26,6 +26,7 @@
 
 	&__center {
 		@include m.container;
+		max-width: 1600px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -37,22 +38,10 @@
 			padding: 0.3rem 0.8rem 0.2rem 0;
 			text-transform: uppercase;
 			position: relative;
-			transition: v.$transition;
-			&:hover::after,
-			&:active::after,
-			&:focus::after {
-				width: 20%;
-			}
 
-			&::after {
-				content: "";
-				width: 0;
-				height: 0.2rem;
-				background-color: v.$color-primary;
-				position: absolute;
-				left: 0;
-				bottom: -0.1rem;
-				transition: v.$transition;
+			&.active {
+				color: v.$color-primary;
+				font-weight: bold;
 			}
 		}
 

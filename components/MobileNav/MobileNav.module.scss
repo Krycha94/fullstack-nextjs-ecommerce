@@ -53,10 +53,9 @@
 			position: relative;
 			transition: v.$transition;
 
-			&:hover,
-			&:active,
-			&:focus {
+			&.active {
 				color: v.$color-primary;
+				font-weight: bold;
 			}
 		}
 	}

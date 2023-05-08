@@ -17,6 +17,7 @@ const Hero = () => {
 						alt="Woman model"
 						width={350}
 						height={700}
+						priority
 					/>
 				</div>
 			</div>
