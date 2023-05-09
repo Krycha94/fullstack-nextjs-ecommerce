@@ -3,11 +3,11 @@
 import { useEffect, useReducer } from "react";
 import filterReducer from "@/reducers/FilterReducer";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import Filters from "../Filters/Filters";
-import ProductList from "../ProductList/ProductList";
+import Filters from "@/components/Filters/Filters";
+import ProductList from "@/components/ProductList/ProductList";
+import Sort from "@/components/Sort/Sort";
 import ProductType from "@/types/ProductType";
 import styles from "./Products.module.scss";
-import Sort from "../Sort/Sort";
 
 type ProductsProps = {
 	products: ProductType[];
