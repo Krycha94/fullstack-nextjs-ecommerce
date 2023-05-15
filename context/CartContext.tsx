@@ -67,6 +67,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	const clearCart = () => {
+		toast.error("Your cart is now empty");
 		dispatch({ type: "CLEAR_CART" });
 	};
 

@@ -11,7 +11,7 @@ export const metadata = {
 	description:
 		"Discover the latest trends in Krycha store, including women, men and kids clothing. Shop the best outfits for this season at our online store",
 	icons: {
-		icon: "/cloth-icon.png",
+		icon: "/shop-icon.png",
 	},
 };
 
