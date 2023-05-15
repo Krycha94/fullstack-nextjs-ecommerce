@@ -16,11 +16,11 @@ const AmountButtons = ({
 }: AmountButtonsProps) => {
 	return (
 		<div className={`${styles.amountBtns} ${cartView && styles.cartView}`}>
-			<button type="button" onClick={decrease}>
+			<button type="button" onClick={decrease} aria-label="Minus">
 				<FaMinus />
 			</button>
 			<span>{amount}</span>
-			<button type="button" onClick={increase}>
+			<button type="button" onClick={increase} aria-label="Plus">
 				<FaPlus />
 			</button>
 		</div>

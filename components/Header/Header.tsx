@@ -42,7 +42,7 @@ const Header = () => {
 					<Image
 						src="/cloth-logo.png"
 						width={80}
-						height={40}
+						height={35}
 						alt="krycha store"
 						className={styles.header__logoImg}
 					/>
