@@ -5,7 +5,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import styles from "./UserPanel.module.scss";
 
 const UserPanel = () => {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 	const { user, logout } = useAuthContext();
 
 	const handleLogout = () => {

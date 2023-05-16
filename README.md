@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Krycha Store
 
-## Getting Started
+[SEE THIS PROJECT LIVE](https://krycha-store.vercel.app/)
 
-First, run the development server:
+## Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Krycha Store is Fullstack Next.js E-Commerce website. The main use of Next.js in this project is pre-rendering, specifically Static Site Generation (SSG). Pre-rendering can result in better performance and SEO which is important in commercial websites. For backend, I used Firebase, so I don't have to worry about implementing, scaling, or maintaining the backend at all and can focus on Frontend only. The application is also tested with Jest and React Testing Library.
+
+Search for the products you are interested in and add them to your shopping cart. To be able to make a purchase, you will need to create an account and then log in. Finally, website uses Stripe to complete the transaction.
+
+## Technologies
+
+In this project I used:
+
+- [Next.js](https://nextjs.org/) React Based framework with server side rendering capability. It is very fast and SEO friendly (version: 13.4.1)
+- [React](https://reactjs.org/) JavaScript library for building user interfaces (version: 18.2.0)
+- [Typescript](https://www.typescriptlang.org/) Javascript superset, which add static typing to Javascript (version: 5.0.4)
+- [SASS](https://sass-lang.com/) CSS with superpowers. Sass is the most mature, stable, and powerful professional grade CSS extension language in the world (version: 1.61.0)
+- [Firebase](https://firebase.google.com/) Backend platform for building Web, Android and IOS applications. It offers real time database, different APIs, multiple authentication types and hosting platform (version: 9.19.1)
+- [Jest](https://jestjs.io/) JavaScript Testing Framework with a focus on simplicity (version: 29.5.0)
+- [React Testing Library](https://testing-library.com/) Set of helpers that let you test React components without relying on their implementation details (version: 14.0.0)
+- [Stripe](https://stripe.com/) Suite of APIs powering online payment processing and commerce solutions for internet businesses of all sizes (version: 12.3.0)
+- [Framer Motion](https://www.framer.com/motion/) Simple yet powerful motion library for React. It powers the amazing animations and interactions (version: 10.12.8)
+- [React Icons](https://react-icons.github.io/react-icons/) Small library that helps you add icons (from all different icon libraries) to your React apps (version: 4.8.0)
+- [React Hot Toast](https://react-hot-toast.com/) Add beautiful notifications to your React app (version: 2.4.1)
+
+## Screenshots
+
+![Krycha Store Test](https://github.com/Krycha94/fullstack-nextjs-ecommerce/blob/main/public/krycha-store-test.jpg?raw=true)
+
+## Installation
+
+Clone repo and install all the dependencies
+
+```
+git clone https://github.com/Krycha94/fullstack-nextjs-ecommerce.git
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create file named
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+.env
+```
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+Which will contain all environmental variable
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=<YOUR STRIPE PUBLISHABLE KEY>
+NEXT_PUBLIC_STRIPE_SECRET_KEY=<YOUR STRIPE SECRET KEY>
+NEXT_PUBLIC_FIREBASE_API_KEY=<YOUR FIREBASE API KEY>
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=<YOUR FIREBASE AUTH DOMAIN>
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=<YOUR FIREBASE PROJECT ID>
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=<YOUR FIREBASE STORAGE BUCKET>
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=<YOUR FIREBASE MESSAGING SENDER ID>
+NEXT_PUBLIC_FIREBASE_APP_ID=<YOUR FIREBASE APP ID>
+```
 
-## Learn More
+Run app in development mode
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Build for production then run app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
+Test app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run test
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
