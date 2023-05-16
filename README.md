@@ -1,3 +1,5 @@
+![Krycha Store gif](https://github.com/Krycha94/fullstack-nextjs-ecommerce/blob/main/public/krycha-store-gif.gif?raw=true)
+
 # Krycha Store
 
 [SEE THIS PROJECT LIVE](https://krycha-store.vercel.app/)
@@ -26,7 +28,7 @@ In this project I used:
 
 ## Screenshots
 
-![Krycha Store Test](https://github.com/Krycha94/fullstack-nextjs-ecommerce/blob/main/public/krycha-store-test.jpg?raw=true)
+![Krycha Store test](https://github.com/Krycha94/fullstack-nextjs-ecommerce/blob/main/public/krycha-store-test.jpg?raw=true)
 
 ## Installation
 
@@ -73,5 +75,4 @@ Test app
 
 ```
 npm run test
-
 ```
