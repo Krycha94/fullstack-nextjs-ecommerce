@@ -5,8 +5,13 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import styles from "./UserPanel.module.scss";
 
 const UserPanel = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	const { user, logout } = useAuthContext();
+
+	const handleLogout = () => {
+		setIsOpen(false);
+		logout();
+	};
 
 	return (
 		<div className={styles.user}>
@@ -16,7 +21,10 @@ const UserPanel = () => {
 				</Link>
 			) : (
 				<div className={styles.user__container}>
-					<div className={styles.user__panel}>
+					<div
+						className={styles.user__panel}
+						onClick={() => setIsOpen((prev) => !prev)}
+					>
 						<img
 							src={user?.photoURL || "/default.png"}
 							alt="profile pic"
@@ -25,17 +33,14 @@ const UserPanel = () => {
 						<p className={styles.user__name}>
 							{user?.displayName?.split(" ")[0] || user?.email}
 						</p>
-						<button
-							onClick={() => setIsOpen((prev) => !prev)}
-							className={styles.user__menuBtn}
-						>
+						<button className={styles.user__menuBtn}>
 							{isOpen ? <FiChevronUp /> : <FiChevronDown />}
 						</button>
 					</div>
 					{isOpen && (
 						<button
 							type="button"
-							onClick={logout}
+							onClick={handleLogout}
 							className={styles.user__logoutBtn}
 						>
 							Logout

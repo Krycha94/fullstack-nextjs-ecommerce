@@ -20,6 +20,8 @@
 
 	&__panel {
 		display: none;
+		cursor: pointer;
+		user-select: none;
 
 		@include b.breakpoint(md) {
 			display: flex;
@@ -46,12 +48,17 @@
 
 	&__logoutBtn {
 		position: absolute;
-		top: 22px;
+		top: 40px;
+		left: 0;
 		right: 0;
 		padding: 0.2rem;
-		font-weight: bold;
-		border: transparent;
-		background-color: transparent;
-		cursor: pointer;
+		border: 1px solid v.$color-font-lighter;
+		border-radius: 4px;
+		background-color: v.$color-bg;
+		transition: v.$transition;
+
+		&:hover {
+			background-color: v.$color-gray-light;
+		}
 	}
 }
